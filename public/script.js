@@ -12,7 +12,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    const response = await fetch('https://mpndddsksdvpwospupdj.supabase.co/rest/v1/Leads', {
+    const response = await fetch('https://mpndddsksdvpwospupdj.supabase.co/rest/v1/leads', {
       method: 'POST',
       headers: {
         'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGF3ZHl4dHVsZmtndWtrZ3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzgyMzgsImV4cCI6MjA2ODY1NDIzOH0.lh9kHboN4crAcAY26s_352_2JzUa9mQpAermNk9wVk8',
