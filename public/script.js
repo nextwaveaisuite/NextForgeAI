@@ -13,45 +13,31 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    const response = await fetch('https://api.getresponse.com/v3/contacts', {
+    const response = await fetch('/api/subscribe', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': 'api-key h67sprn9pa6n48g80743krjwcpwkv263'
-      },
-      body: JSON.stringify({
-        email: email,
-        name: "",
-        campaign: {
-          name: "nextwaveaisuite"
-        }
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
     });
 
-    if (response.status === 202 || response.status === 200) {
+    const result = await response.json();
+
+    if (response.ok && result.success) {
       formMessage.textContent = "✅ You're in! Downloading your PDF...";
 
-      // Start PDF download
       const link = document.createElement('a');
       link.href = 'nextforge-report.pdf';
       link.download = 'NextForge-Report.pdf';
-      document.body.appendChild(link);
       link.click();
-      document.body.removeChild(link);
 
-      // Redirect to thank-you page
       setTimeout(() => {
         window.location.href = 'success.html';
       }, 1800);
-
-      emailInput.value = "";
     } else {
-      const errorData = await response.json();
-      console.error("GetResponse API error:", errorData);
-      formMessage.textContent = "⚠️ Something went wrong. Please try again.";
+      console.error(result);
+      formMessage.textContent = "⚠️ Something went wrong. Try again.";
     }
   } catch (err) {
-    console.error("Network error:", err);
-    formMessage.textContent = "⚠️ There was a network error. Please try again.";
+    console.error(err);
+    formMessage.textContent = "⚠️ Network error. Please try again.";
   }
 });
