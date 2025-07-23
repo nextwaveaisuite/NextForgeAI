@@ -9,7 +9,7 @@ document.getElementById("optin-form").addEventListener("submit", async function 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        apikey: "SUPABASE_ANON_KEY_HERE",
+        apikey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGF3ZHl4dHVsZmtndWtrZ3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzgyMzgsImV4cCI6MjA2ODY1NDIzOH0.lh9kHboN4crAcAY26s_352_2JzUa9mQpAermNk9wVk8",
         Authorization: "Bearer SUPABASE_ANON_KEY_HERE",
         Prefer: "return=minimal",
       },
