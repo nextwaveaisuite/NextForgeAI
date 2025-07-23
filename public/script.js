@@ -25,16 +25,22 @@ form.addEventListener('submit', async (e) => {
 
     if (!response.ok) throw new Error('Failed to submit');
 
-    formMessage.textContent = "✅ You're in! Your PDF is downloading...";
-    emailInput.value = "";
+    formMessage.textContent = "✅ You're in! Downloading your PDF...";
 
-    // Wait a second before triggering download
+    // Start download
+    const link = document.createElement('a');
+    link.href = 'nextforge-report.pdf'; // Ensure this file exists in /public
+    link.download = 'NextForge-Report.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Redirect after short delay
     setTimeout(() => {
-      const link = document.createElement('a');
-      link.href = 'nextforge-report.pdf'; // must match your file name
-      link.download = 'NextForge-Report.pdf';
-      link.click();
-    }, 1000);
+      window.location.href = 'success.html';
+    }, 1800);
+
+    emailInput.value = "";
 
   } catch (err) {
     console.error(err);
