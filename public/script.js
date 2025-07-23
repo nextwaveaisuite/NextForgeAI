@@ -1,27 +1,69 @@
-// Replace with your real Supabase URL and key
-const SUPABASE_URL = "https://gnhawdyxtulfkgukkgzl.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ...";
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+.container {
+  text-align: center;
+  max-width: 500px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
 
-const form = document.getElementById("optin-form");
-const emailInput = document.getElementById("email");
-const statusMessage = document.getElementById("statusMessage");
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const email = emailInput.value.trim();
+.features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
 
-  if (!email) return;
+.features li {
+  margin: 0.5rem 0;
+}
 
-  const { error } = await client.from("optins").insert([{ email }]);
+form {
+  display: flex;
+  flex-direction: column;
+}
 
-  if (error) {
-    statusMessage.textContent = "❌ Something went wrong. Try again.";
-  } else {
-    statusMessage.textContent = "✅ You're in! Redirecting...";
-    setTimeout(() => {
-      window.location.href = "/dashboard";
-    }, 1500);
-  }
-});
+input[type="email"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px;
+  font-size: 1rem;
+  background: #00c9ff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00a3cc;
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ffdb6e;
+}
