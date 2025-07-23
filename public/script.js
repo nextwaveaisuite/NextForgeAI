@@ -12,21 +12,30 @@ form.addEventListener('submit', async (e) => {
   }
 
   try {
-    const { data, error } = await fetch('https://YOUR-SUPABASE-URL.supabase.co/rest/v1/leads', {
+    const response = await fetch('https://YOUR-SUPABASE-URL.supabase.co/rest/v1/leads', {
       method: 'POST',
       headers: {
-        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGF3ZHl4dHVsZmtndWtrZ3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzgyMzgsImV4cCI6MjA2ODY1NDIzOH0.lh9kHboN4crAcAY26s_352_2JzUa9mQpAermNk9wVk8',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGF3ZHl4dHVsZmtndWtrZ3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzgyMzgsImV4cCI6MjA2ODY1NDIzOH0.lh9kHboN4crAcAY26s_352_2JzUa9mQpAermNk9wVk8',
+        'apikey': 'YOUR-ANON-KEY',
+        'Authorization': 'Bearer YOUR-ANON-KEY',
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
       body: JSON.stringify({ email })
     });
 
-    if (error) throw error;
+    if (!response.ok) throw new Error('Failed to submit');
 
-    formMessage.textContent = "✅ You're in! Check your inbox shortly.";
+    formMessage.textContent = "✅ You're in! Your PDF is downloading...";
     emailInput.value = "";
+
+    // Wait a second before triggering download
+    setTimeout(() => {
+      const link = document.createElement('a');
+      link.href = 'nextforge-report.pdf'; // must match your file name
+      link.download = 'NextForge-Report.pdf';
+      link.click();
+    }, 1000);
+
   } catch (err) {
     console.error(err);
     formMessage.textContent = "⚠️ There was a problem saving your email. Please try again.";
