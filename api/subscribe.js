@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   const { email } = req.body;
 
   // 🔧 === ENTER YOUR DETAILS BELOW ===
-  const apiKey = 'api-key YOUR_GETRESPONSE_API_KEY_HERE'; // e.g., api-key abc123xyz456
-  const campaignId = 'YOUR_GETRESPONSE_CAMPAIGN_ID_HERE'; // e.g., e6e8a9db5b1234x9z
+  const apiKey = 'api-key e6e8a9db5b1234x9z'; // e.g., api-key abc123xyz456
+  const campaignId = 'e6e8a9db5b1234x9z'; // e.g., e6e8a9db5b1234x9z
 
   try {
     const response = await fetch('https://api.getresponse.com/v3/contacts', {
