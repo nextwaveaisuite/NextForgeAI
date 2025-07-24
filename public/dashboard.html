@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextForge AI Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #1e293b;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .dashboard {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #1e293b;
+      border-radius: 10px;
+    }
+
+    .credit-bar {
+      background: #334155;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .input-area textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .input-area button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .output-area {
+      margin-top: 20px;
+      background: #0f172a;
+      padding: 15px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      min-height: 150px;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🧠 NextForge AI Dashboard</h1>
+  <p>Instant SaaS Creation Tool</p>
+</header>
+
+<div class="dashboard">
+  <div class="credit-bar">
+    Credits Remaining: <strong>10</strong> (Starter Plan)
+  </div>
+
+  <div class="input-area">
+    <textarea id="prompt" rows="4" placeholder="Describe the SaaS tool you want to create..."></textarea>
+    <button onclick="generate()">Generate Tool</button>
+  </div>
+
+  <div class="output-area" id="output">
+    <!-- AI response will appear here -->
+  </div>
+</div>
+
+<footer>
+  © 2025 NextWave AI Suite – All rights reserved
+</footer>
+
+<script>
+  async function generate() {
+    const prompt = document.getElementById('prompt').value.trim();
+    const output = document.getElementById('output');
+
+    if (!prompt) {
+      output.innerText = "⚠️ Please enter a prompt.";
+      return;
+    }
+
+    output.innerText = "⏳ Generating your SaaS tool...";
+
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer YOUR_OPENAI_API_KEY"
+        },
+        body: JSON.stringify({
+          model: "gpt-4",
+          messages: [
+            { role: "system", content: "You are an expert SaaS product builder. Help users create profitable AI SaaS tools with great business ideas and sample code." },
+            { role: "user", content: prompt }
+          ],
+          temperature: 0.7
+        })
+      });
+
+      const data = await response.json();
+      const reply = data.choices?.[0]?.message?.content || "No response.";
+      output.innerText = reply;
+    } catch (err) {
+      console.error(err);
+      output.innerText = "⚠️ Error connecting to GPT API.";
+    }
+  }
+</script>
+
+</body>
+</html>
 
