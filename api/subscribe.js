@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
   // Default: Use Craigie's key + list (for now)
   const apiKey = 'api-key esejc0llmz4vby5jrgprhdpn8zpag781';
-  const campaignId = 'PASTE-YOUR-REAL-CAMPAIGN-ID-HERE'; // TEMP placeholder
+  const campaignId = '32776'; // TEMP placeholder
 
   try {
     const response = await fetch('https://api.getresponse.com/v3/contacts', {
