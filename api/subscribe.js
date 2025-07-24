@@ -1,5 +1,5 @@
 const SUPABASE_URL = 'https://mpndddsksdvpwospupdj.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1wbmRkZHNrc2R2cHdvc3B1cGRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkwNzM1NzAsImV4cCI6MjAzNDY0OTU3MH0.xz1OQzy41LV8Hj7JfY9UvfvWtyNjXyXWH-dnI0LydTk';
 
 const form = document.getElementById('lead-form');
 const emailInput = document.getElementById('email');
