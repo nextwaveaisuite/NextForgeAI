@@ -1,43 +1,43 @@
+const SUPABASE_URL = 'https://mpndddsksdvpwospupdj.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1wbmRkZHNrc2R2cHdvc3B1cGRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkwNzM1NzAsImV4cCI6MjAzNDY0OTU3MH0.xz1OQzy41LV8Hj7JfY9UvfvWtyNjXyXWH-dnI0LydTk';
+
 const form = document.getElementById('lead-form');
 const emailInput = document.getElementById('email');
-const formMessage = document.getElementById('form-message');
+const message = document.getElementById('form-message');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = emailInput.value.trim();
-  formMessage.textContent = "";
-
-  if (!email) {
-    formMessage.textContent = "Please enter a valid email.";
-    return;
-  }
 
   try {
-    const response = await fetch('/api/subscribe', {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Prefer': 'return=representation'
+      },
       body: JSON.stringify({ email })
     });
 
     const result = await response.json();
 
-    if (response.ok && result.success) {
-      formMessage.textContent = "✅ You're in! Downloading your PDF...";
-
-      const link = document.createElement('a');
-      link.href = 'nextforge-report.pdf';
-      link.download = 'NextForge-Report.pdf';
-      link.click();
-
-      setTimeout(() => {
-        window.location.href = 'success.html';
-      }, 1800);
+    if (!response.ok) {
+      console.error('Supabase Error:', result);
+      message.textContent = '⚠️ Something went wrong. Please try again.';
+      message.style.color = 'red';
     } else {
-      console.error(result);
-      formMessage.textContent = "⚠️ Something went wrong. Try again.";
+      message.textContent = '✅ You’ve been subscribed!';
+      message.style.color = 'green';
+      form.reset();
+
+      // OPTIONAL: Uncomment below to redirect after success
+      // window.location.href = "success.html";
     }
   } catch (err) {
-    console.error(err);
-    formMessage.textContent = "⚠️ Network error. Please try again.";
+    console.error('Network Error:', err);
+    message.textContent = '⚠️ Network error. Please try again.';
+    message.style.color = 'red';
   }
 });
