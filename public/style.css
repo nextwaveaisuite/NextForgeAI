@@ -1,62 +1,47 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: #0e101c;
+  background: linear-gradient(to bottom right, #0f172a, #1e293b);
   color: #fff;
-  margin: 0;
-  padding: 0;
   display: flex;
-  height: 100vh;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .container {
   text-align: center;
-  max-width: 480px;
-  margin: auto;
-  padding: 20px;
-  background: #1c1f2f;
-  border-radius: 12px;
-  box-shadow: 0 0 24px rgba(0, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  max-width: 400px;
 }
 
-h1 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.subheading {
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #bbb;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+h1 span {
+  color: #38bdf8;
 }
 
 input[type="email"] {
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 0.8rem;
   width: 100%;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 button {
-  padding: 12px;
-  font-size: 16px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
   border: none;
-  border-radius: 8px;
-  background: #00e0c4;
+  border-radius: 10px;
+  background-color: #38bdf8;
   color: #000;
   cursor: pointer;
-  font-weight: bold;
 }
 
-.message {
-  margin-top: 8px;
-  font-size: 14px;
+#form-message {
+  margin-top: 1rem;
+  font-weight: bold;
 }
