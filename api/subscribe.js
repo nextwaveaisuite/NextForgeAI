@@ -10,13 +10,13 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': 'api-key h67sprn9pa6n48g80743krjwcpwkv263'
+        'X-Auth-Token': 'api-key esejc0llmz4vby5jrgprhdpn8zpag781'
       },
       body: JSON.stringify({
         email: email,
         name: "",
         campaign: {
-          campaignId: "32776"
+          campaignId: "32776"  // Using the List ID you gave
         }
       })
     });
