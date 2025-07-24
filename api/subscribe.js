@@ -5,18 +5,22 @@ export default async function handler(req, res) {
 
   const { email } = req.body;
 
+  // Default: Use Craigie's key + list (for now)
+  const apiKey = 'api-key esejc0llmz4vby5jrgprhdpn8zpag781';
+  const campaignId = '32776'; // TEMP placeholder
+
   try {
     const response = await fetch('https://api.getresponse.com/v3/contacts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Token': 'api-key esejc0llmz4vby5jrgprhdpn8zpag781'
+        'X-Auth-Token': apiKey
       },
       body: JSON.stringify({
         email: email,
         name: "",
         campaign: {
-          campaignId: "32776"  // Using the List ID you gave
+          campaignId: campaignId
         }
       })
     });
