@@ -1,35 +1,66 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f9f9ff;
-  color: #222;
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #f0f4ff, #e2e8ff);
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
 .container {
-  max-width: 480px;
-  margin: 60px auto;
-  padding: 40px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 5vh auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 h1 {
-  color: #222;
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: #2a2a6e;
 }
 
-.subhead {
-  font-size: 16px;
+.subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
   color: #555;
-  margin-bottom: 30px;
+}
+
+.tagline {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+input[type="email"] {
+  width: 80%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.button, button {
+  background: #2a2a6e;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button:hover, button:hover {
+  background: #1a1a5e;
 }
 
 footer {
-  margin-top: 40px;
-  font-size: 13px;
-  color: #888;
-}
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #777;
+    }
