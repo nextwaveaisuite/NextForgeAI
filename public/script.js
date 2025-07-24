@@ -29,15 +29,13 @@ form.addEventListener('submit', async (e) => {
     const result = await response.json();
 
     if (!response.ok) {
-      console.error('Supabase Error:', result);
-      message.textContent = '⚠️ Something went wrong. Please try again.';
-    } else {
-      message.textContent = '✅ You’ve been subscribed!';
-      form.reset();
-
-      // Optional: redirect after success
-      // window.location.href = 'success.html';
-    }
+  console.error('Supabase Error:', result);
+  message.textContent = '⚠️ Something went wrong. Please try again.';
+} else {
+  message.textContent = '✅ You’ve been subscribed!';
+  form.reset();
+  window.location.href = 'success.html'; // <-- this triggers the redirect
+}
   } catch (err) {
     console.error('Network Error:', err);
     message.textContent = '⚠️ Network error. Please try again.';
