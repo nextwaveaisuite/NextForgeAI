@@ -5,9 +5,9 @@ export default async function handler(req, res) {
 
   const { email } = req.body;
 
-  // Default: Use Craigie's key + list (for now)
-  const apiKey = 'api-key esejc0llmz4vby5jrgprhdpn8zpag781';
-  const campaignId = '32776'; // TEMP placeholder
+  // 🔧 === ENTER YOUR DETAILS BELOW ===
+  const apiKey = 'api-key YOUR_GETRESPONSE_API_KEY_HERE'; // e.g., api-key abc123xyz456
+  const campaignId = 'YOUR_GETRESPONSE_CAMPAIGN_ID_HERE'; // e.g., e6e8a9db5b1234x9z
 
   try {
     const response = await fetch('https://api.getresponse.com/v3/contacts', {
@@ -18,7 +18,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         email: email,
-        name: "",
+        name: "", // optional
         campaign: {
           campaignId: campaignId
         }
