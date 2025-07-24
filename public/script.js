@@ -1,6 +1,8 @@
+// Your Supabase credentials
 const SUPABASE_URL = 'https://mpndddsksdvpwospupdj.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1wbmRkZHNrc2R2cHdvc3B1cGRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkwNzM1NzAsImV4cCI6MjAzNDY0OTU3MH0.xz1OQzy41LV8Hj7JfY9UvfvWtyNjXyXWH-dnI0LydTk';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // Use full key here
 
+// Get form and UI elements
 const form = document.getElementById('lead-form');
 const emailInput = document.getElementById('email');
 const message = document.getElementById('form-message');
@@ -10,7 +12,7 @@ form.addEventListener('submit', async (e) => {
   const email = emailInput.value.trim();
 
   if (!email) {
-    message.textContent = '⚠️ Please enter a valid email.';
+    message.textContent = '⚠️ Please enter a valid email address.';
     return;
   }
 
@@ -27,14 +29,18 @@ form.addEventListener('submit', async (e) => {
     });
 
     const result = await response.json();
+    console.log('Supabase Response:', result);
 
     if (!response.ok) {
-      console.error('Supabase Error:', result);
       message.textContent = '⚠️ Something went wrong. Please try again.';
     } else {
       message.textContent = '✅ You’ve been subscribed!';
       form.reset();
+
+      // Optional: redirect to success page
+      // window.location.href = 'success.html';
     }
+
   } catch (err) {
     console.error('Network Error:', err);
     message.textContent = '⚠️ Network error. Please try again.';
