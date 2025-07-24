@@ -10,7 +10,7 @@ form.addEventListener('submit', async (e) => {
   const email = emailInput.value.trim();
 
   if (!email) {
-    message.textContent = '❗ Please enter a valid email address.';
+    message.textContent = '⚠️ Please enter a valid email address.';
     return;
   }
 
@@ -26,16 +26,18 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify({ email })
     });
 
-    if (response.ok) {
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error('Supabase Error:', result);
+      message.textContent = '⚠️ Something went wrong. Please try again.';
+    } else {
       message.textContent = '✅ You’ve been subscribed!';
       form.reset();
-    } else {
-      const result = await response.json();
-      console.error('Supabase Error:', result);
-      message.textContent = '❌ Subscription failed. Please try again later.';
     }
   } catch (err) {
     console.error('Network Error:', err);
-    message.textContent = '❌ Network error. Please check your connection.';
+    message.textContent = '⚠️ Network error. Please try again.';
   }
 });
+                                 
