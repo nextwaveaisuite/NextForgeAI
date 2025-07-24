@@ -1,35 +1,37 @@
-document.getElementById("lead-form").addEventListener("submit", async function (e) {
-  e.preventDefault();
+const SUPABASE_URL = 'https://mpndddsksdvpwospupdj.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1wbmRkZHNrc2R2cHdvc3B1cGRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTkwNzM1NzAsImV4cCI6MjAzNDY0OTU3MH0.xz1OQzy41LV8Hj7JfY9UvfvWtyNjXyXWH-dnI0LydTk';
 
-  const email = document.getElementById("email").value;
-  const formMessage = document.getElementById("form-message");
-  formMessage.textContent = "⏳ Submitting...";
+const form = document.getElementById('lead-form');
+const emailInput = document.getElementById('email');
+const message = document.getElementById('form-message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = emailInput.value.trim();
 
   try {
-    const response = await fetch("https://api.getresponse.com/v3/contacts", {
-      method: "POST",
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "X-Auth-Token": "api-key ryzjwabz8gunafspawbkdyp2nk9mg6ce"
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Prefer': 'return=representation'
       },
-      body: JSON.stringify({
-        email: email,
-        campaign: {
-          campaignId: "iKQYF"
-        }
-      })
+      body: JSON.stringify({ email })
     });
 
-    if (response.ok) {
-      formMessage.textContent = "✅ You're in! Check your inbox.";
-      document.getElementById("lead-form").reset();
+    const result = await response.json();
+
+    if (!response.ok) {
+      console.error('Supabase Error:', result);
+      message.textContent = '⚠️ Something went wrong. Please try again.';
     } else {
-      const errorData = await response.json();
-      console.error("Error details:", errorData);
-      formMessage.textContent = "⚠️ Something went wrong. Please try again.";
+      message.textContent = '✅ You’ve been subscribed!';
+      form.reset();
     }
-  } catch (error) {
-    console.error("Request error:", error);
-    formMessage.textContent = "⚠️ Network error. Please check your connection.";
+  } catch (err) {
+    console.error('Network Error:', err);
+    message.textContent = '⚠️ Network error. Please try again.';
   }
 });
