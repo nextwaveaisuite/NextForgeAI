@@ -1,5 +1,5 @@
-const SUPABASE_URL = 'https://mpndddsksdvpwospupdj.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'; // Use full anon key here
+const SUPABASE_URL = 'https://gnhawdytxulfkgukkgzl.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGF3ZHl4dHVsZmtndWtrZ3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzgyMzgsImV4cCI6MjA2ODY1NDIzOH0.lh9kHboN4crAcAY26s_352_2JzUa9mQpAermNk9wVk8';
 
 const form = document.getElementById('lead-form');
 const emailInput = document.getElementById('email');
@@ -29,18 +29,17 @@ form.addEventListener('submit', async (e) => {
     const result = await response.json();
 
     if (!response.ok) {
-      console.error('Supabase error:', result);
+      console.error('Supabase Error:', result);
       message.textContent = '⚠️ Something went wrong. Please try again.';
     } else {
       message.textContent = '✅ You’ve been subscribed!';
       form.reset();
-      setTimeout(() => {
-        window.location.href = 'success.html';
-      }, 1500);
-    }
 
+      // Optional: redirect after success
+      // window.location.href = 'success.html';
+    }
   } catch (err) {
-    console.error('Network error:', err);
+    console.error('Network Error:', err);
     message.textContent = '⚠️ Network error. Please try again.';
   }
 });
