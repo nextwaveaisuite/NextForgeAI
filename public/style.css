@@ -1,19 +1,40 @@
 body {
-  font-family: sans-serif;
-  background: #f4f8ff;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #e8f0ff, #ffffff);
   margin: 0;
   padding: 0;
+  animation: fadeIn 1.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .container {
   max-width: 900px;
   margin: auto;
-  padding: 40px;
+  padding: 30px;
 }
 
 .hero {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #005eff;
+}
+
+.highlight {
+  background: #005eff;
+  color: white;
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 0.9rem;
 }
 
 .content {
@@ -22,34 +43,48 @@ body {
   flex-wrap: wrap;
 }
 
-.left {
+.left, .right {
   flex: 1;
+  min-width: 280px;
 }
 
-.right {
-  flex: 1;
-  background: white;
+.left ul {
+  padding-left: 20px;
+  line-height: 1.6;
+  color: #333;
+}
+
+form {
+  background: #fff;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #ccc;
+  border: 1px solid #ddd;
+  border-radius: 10px;
 }
 
 input[type="email"] {
   width: 100%;
   padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 button {
-  padding: 10px 20px;
   background: #005eff;
-  color: white;
+  color: #fff;
+  padding: 10px 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #0041b3;
 }
 
 #form-message {
   margin-top: 10px;
+  font-weight: bold;
 }
