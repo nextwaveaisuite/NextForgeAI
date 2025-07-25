@@ -3,75 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextForge AI – Launch SaaS Tools Instantly</title>
+  <title>NextForge AI – Launch SaaS Tools in 60 Seconds</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="light-theme">
+<body>
 
   <header>
     <h1>NextForge AI</h1>
-    <p>Launch SaaS Tools Instantly in 60 Seconds</p>
+    <p class="subtitle">Launch SaaS Tools Instantly in 60 Seconds</p>
   </header>
 
-  <main>
-    <section class="optin">
-      <h2>Unlock Full Access</h2>
-      <p>Enter your email to start using NextForge AI</p>
-
-      <!-- ✅ Sleek AWeber Form Embed -->
-      <div class="AW-Form-183149529 sleek-optin"></div>
-      <script type="text/javascript">
-        (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//forms.aweber.com/form/29/183149529.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, "script", "aweber-wjs-1qwb5hvl8"));
-      </script>
-
-      <!-- ⏳ Progress Bar -->
-      <div id="progress-bar" style="display:none; margin-top: 20px;">
-        <p>Processing...</p>
-        <progress value="0" max="100" id="progress"></progress>
-      </div>
-    </section>
-  </main>
+  <section class="optin">
+    <div class="ebook-placeholder">
+      <!-- Optional PDF image -->
+      <img src="ebook-placeholder.png" alt="Free PDF Guide" />
+    </div>
+    <div class="form-box">
+      <form id="aweber-form">
+        <label for="email">Unlock Full Access</label>
+        <input type="email" name="email" id="email" placeholder="you@example.com" required />
+        <button type="submit" class="cta">Access Now</button>
+      </form>
+    </div>
+  </section>
 
   <footer>
     <p>© 2025 NextWave AI Suite – All rights reserved.</p>
   </footer>
 
-  <!-- 🚀 Submit Animation Script -->
-  <script>
-    const aweberFormCheck = setInterval(() => {
-      const btn = document.querySelector('.AW-Form-183149529 form input[type="submit"]');
-      if (btn) {
-        clearInterval(aweberFormCheck);
-        btn.style.backgroundColor = '#28a745'; // Sleek green
-        btn.style.color = '#fff';
-        btn.style.border = 'none';
-        btn.style.padding = '10px 20px';
-        btn.style.fontSize = '16px';
-        btn.style.borderRadius = '4px';
-        btn.style.cursor = 'pointer';
-
-        btn.addEventListener('click', () => {
-          const progressSection = document.getElementById('progress-bar');
-          const bar = document.getElementById('progress');
-          progressSection.style.display = 'block';
-          let progress = 0;
-          const interval = setInterval(() => {
-            if (progress >= 100) {
-              clearInterval(interval);
-            } else {
-              progress += 5;
-              bar.value = progress;
-            }
-          }, 100);
-        });
-      }
-    }, 500);
+  <!-- Paste your AWeber form JS snippet here -->
+  <script type="text/javascript">
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//forms.aweber.com/form/29/183149529.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, "script", "aweber-wjs-1qwb5hvl8"));
   </script>
 
 </body>
