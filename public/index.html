@@ -2,36 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextForge AI</title>
+  <title>NextForge AI – Build Your SaaS Instantly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #161b22;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    header h1 {
+      color: #58a6ff;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+    }
+
+    section.optin {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #21262d;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      text-align: center;
+    }
+
+    section.optin h2 {
+      color: #3fb950;
+      margin-bottom: 10px;
+    }
+
+    section.optin p {
+      margin-bottom: 20px;
+    }
+
+    #loading-bar {
+      width: 0%;
+      height: 4px;
+      background: #3fb950;
+      transition: width 0.5s ease;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #8b949e;
+      padding-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <h1>🚀 NextForge AI</h1>
-    <p>The Fastest Way to Build & Launch AI SaaS Tools</p>
+
+  <header>
+    <h1>NextForge AI</h1>
+    <p>Create & Monetize AI SaaS Instantly</p>
   </header>
-
-  <section class="features">
-    <h2>What You Can Do with NextForge AI</h2>
-    <ul>
-      <li>✅ Instantly generate SaaS tools using AI</li>
-      <li>✅ Export and launch your tools with 1 click</li>
-      <li>✅ Zero coding, zero hosting headaches</li>
-      <li>✅ Monetize with affiliate links or subscriptions</li>
-    </ul>
-  </section>
-
-  <section class="video">
-    <h2>🎥 Watch How It Works</h2>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/jNQXAC9IVRw" title="NextForge AI Demo" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </section>
 
   <section class="optin">
     <h2>🔓 Unlock Access</h2>
     <p>Enter your email to access NextForge AI:</p>
+
+    <!-- Loading Bar -->
+    <div id="loading-bar"></div>
 
     <!-- AWeber Opt-In Form -->
     <div class="AW-Form-183149529"></div>
@@ -46,8 +93,25 @@
     </script>
   </section>
 
-  <footer class="footer">
+  <footer>
     <p>© 2025 NextWave AI Suite – All rights reserved.</p>
   </footer>
+
+  <!-- Bonus: Progress Bar on Submit -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const interval = setInterval(() => {
+        const forms = document.querySelectorAll('form');
+        if (forms.length > 0) {
+          forms.forEach(form => {
+            form.addEventListener('submit', () => {
+              document.getElementById('loading-bar').style.width = '100%';
+            });
+          });
+          clearInterval(interval);
+        }
+      }, 500);
+    });
+  </script>
 </body>
 </html>
