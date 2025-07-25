@@ -1,75 +1,60 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9f9;
+  font-family: Arial, sans-serif;
+  background: #f5f9ff;
   color: #333;
   margin: 0;
-  padding: 0;
+  padding: 40px 20px;
 }
 
-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: white;
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
 }
 
 h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.3rem;
+  color: #1a73e8;
+  margin-bottom: 15px;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: #666;
+p, li {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-.optin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 1rem;
-  gap: 2rem;
+ul {
+  margin: 10px 0 20px;
 }
 
-.ebook-placeholder img {
-  max-width: 240px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.form-box {
-  max-width: 400px;
-  width: 100%;
-}
-
-.cta {
-  background: #28a745;
+.btn {
+  background: #00b86b;
   color: white;
-  padding: 0.8rem;
-  font-size: 1rem;
   border: none;
-  border-radius: 5px;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
-  text-align: center;
-  text-decoration: none;
+  margin-top: 10px;
 }
 
-.cta:hover {
-  background: #218838;
+.btn:hover {
+  background: #009f5e;
 }
 
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #888;
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
 }
 
-.success-page header {
-  background: #e6ffe6;
-}
-
-.centered {
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
+pre {
+  background: #f0f0f0;
+  padding: 12px;
+  border-radius: 6px;
+  white-space: pre-wrap;
 }
