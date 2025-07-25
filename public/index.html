@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextForge AI – Build AI SaaS in 60 Seconds</title>
+  <title>NextForge AI – Launch SaaS Tools Instantly</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="light-theme">
 
   <header>
     <h1>NextForge AI</h1>
-    <p>Create & Monetize AI SaaS Instantly</p>
+    <p>Launch SaaS Tools Instantly in 60 Seconds</p>
   </header>
 
   <main>
     <section class="optin">
-      <h2>Get Instant Access</h2>
-      <p>Enter your email below to unlock the full software:</p>
+      <h2>Unlock Full Access</h2>
+      <p>Enter your email to start using NextForge AI</p>
 
-      <!-- ✅ AWeber Form Embed -->
-      <div class="AW-Form-183149529"></div>
+      <!-- ✅ Sleek AWeber Form Embed -->
+      <div class="AW-Form-183149529 sleek-optin"></div>
       <script type="text/javascript">
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
@@ -30,20 +30,11 @@
         }(document, "script", "aweber-wjs-1qwb5hvl8"));
       </script>
 
-      <!-- Progress Bar (Hidden Initially) -->
+      <!-- ⏳ Progress Bar -->
       <div id="progress-bar" style="display:none; margin-top: 20px;">
         <p>Processing...</p>
         <progress value="0" max="100" id="progress"></progress>
       </div>
-    </section>
-
-    <!-- 📽️ Embedded Explainer Video -->
-    <section class="video">
-      <h2>See How It Works</h2>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/BMraDSbW4qk" 
-              title="Explainer Video" frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen></iframe>
     </section>
   </main>
 
@@ -51,15 +42,20 @@
     <p>© 2025 NextWave AI Suite – All rights reserved.</p>
   </footer>
 
-  <!-- 💬 Chat Button -->
-  <button class="chat-btn" onclick="alert('Launching AI Assistant...')">💬 Chat with AI Assistant</button>
-
-  <!-- Optional: Loading Bar Script -->
+  <!-- 🚀 Submit Animation Script -->
   <script>
     const aweberFormCheck = setInterval(() => {
       const btn = document.querySelector('.AW-Form-183149529 form input[type="submit"]');
       if (btn) {
         clearInterval(aweberFormCheck);
+        btn.style.backgroundColor = '#28a745'; // Sleek green
+        btn.style.color = '#fff';
+        btn.style.border = 'none';
+        btn.style.padding = '10px 20px';
+        btn.style.fontSize = '16px';
+        btn.style.borderRadius = '4px';
+        btn.style.cursor = 'pointer';
+
         btn.addEventListener('click', () => {
           const progressSection = document.getElementById('progress-bar');
           const bar = document.getElementById('progress');
@@ -79,5 +75,4 @@
   </script>
 
 </body>
-  </html>
-  
+</html>
