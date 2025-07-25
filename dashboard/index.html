@@ -2,36 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NextForge AI Dashboard</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <div class="container">
     <h1>🧠 NextForge AI Dashboard</h1>
-    <p>Welcome! Use the panel below to launch your SaaS tools in seconds.</p>
+    <p>Welcome! You now have full access to the tool.</p>
 
-    <div class="ai-panel">
-      <label for="prompt">Enter Your SaaS Idea:</label>
-      <textarea id="prompt" rows="4" placeholder="e.g., Create a habit tracker for daily productivity..."></textarea>
-      <button onclick="generateResponse()">Generate Tool</button>
-      <pre id="response"></pre>
-    </div>
+    <!-- Prompt Input -->
+    <label for="prompt">Your Idea:</label>
+    <input type="text" id="prompt" placeholder="e.g. AI Tool for freelancers" />
+    <button onclick="generate()">Generate SaaS Tool</button>
 
-    <div class="upgrade">
-      <p><strong>Want more features?</strong></p>
-      <button onclick="window.location.href='https://buy.stripe.com/test_cN28z82Fn0Lbg3qcMM'" class="btn">Upgrade Now</button>
+    <!-- AI Response Area -->
+    <div id="output" class="panel">
+      <p><strong>AI Response:</strong></p>
+      <pre id="response">Waiting for your input...</pre>
     </div>
   </div>
 
   <script>
-    function generateResponse() {
-      const input = document.getElementById("prompt").value;
-      const output = document.getElementById("response");
-      if (!input.trim()) {
-        output.textContent = "Please enter a SaaS idea first.";
-        return;
-      }
-      output.textContent = "✅ Generating tool for: " + input + " ... (mock output)";
+    async function generate() {
+      const prompt = document.getElementById("prompt").value;
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer YOUR_OPENAI_API_KEY",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "gpt-4",
+          messages: [{ role: "user", content: prompt }],
+        })
+      });
+      const data = await res.json();
+      document.getElementById("response").innerText = data.choices[0].message.content;
     }
   </script>
 </body>
