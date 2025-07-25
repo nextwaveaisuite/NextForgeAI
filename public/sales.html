@@ -1,97 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Get Instant Access – NextForge AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4faff;
-      color: #111;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.2rem;
-      color: #0b3d91;
-    }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    .btn {
-      background: #22b573;
-      color: white;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      margin: 10px;
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.2s ease;
-    }
-    .btn:hover {
-      background: #1a9e64;
-    }
-    .button-group {
-      margin-top: 30px;
-    }
-    iframe {
-      display: none;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get Access – NextForge AI</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>🔥 Unlock NextForge AI</h1>
+    <p class="subheading">Your AI-powered SaaS Builder. Create, Launch, and Monetize in Seconds.</p>
 
-  <h1>🚀 Unlock NextForge AI for Just $12.95</h1>
-  <p>Your future SaaS empire starts with this tool. Get instant lifetime access now.</p>
+    <ul class="features">
+      <li>✅ Build AI SaaS tools in under 60 seconds</li>
+      <li>✅ No coding or design required</li>
+      <li>✅ 100% hosted & automated</li>
+      <li>✅ One-time unlock: just $12.95</li>
+    </ul>
 
-  <!-- Clean Unified CTA -->
-  <div class="button-group">
-    <a href="#pay-options" class="btn" onclick="document.getElementById('pay-options').style.display='block'">Choose Payment Method</a>
+    <div class="payment-buttons">
+      <a href="https://buy.stripe.com/8wM5nI1bD0wC1WcfYY" class="button stripe">💳 Pay with Stripe</a>
+
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
+        <input type="hidden" name="item_name" value="NextForge AI Access">
+        <input type="hidden" name="amount" value="12.95">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="return" value="https://nextforge.nextwaveaisuite.com/dashboard/index.html">
+        <button type="submit" class="button paypal">🅿️ Pay with PayPal</button>
+      </form>
+    </div>
   </div>
-
-  <!-- Payment Options Revealed -->
-  <div id="pay-options" style="display:none; margin-top:20px;">
-    <!-- Stripe Checkout -->
-    <a href="https://buy.stripe.com/test_8wM5mDcyW8Sg5xCcMO" class="btn">💳 Pay with Stripe</a>
-
-    <!-- PayPal Integration -->
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:inline-block;">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
-      <input type="hidden" name="item_name" value="NextForge AI Lifetime Access">
-      <input type="hidden" name="amount" value="12.95">
-      <input type="hidden" name="currency_code" value="USD">
-      <input type="hidden" name="return" value="https://nextforge.nextwaveaisuite.com/dashboard/index.html">
-      <input type="hidden" name="cancel_return" value="https://nextforge.nextwaveaisuite.com/sales.html">
-      <button type="submit" class="btn">🅿️ Pay with PayPal</button>
-    </form>
-  </div>
-
-  <!-- AWeber Opt-in (Optional) -->
-  <div style="margin-top:40px;">
-    <h2>🔒 Stay Updated</h2>
-    <p>We’ll send access updates or bonuses to your email.</p>
-    <div class="AW-Form-183149529"></div>
-    <script type="text/javascript">
-      (function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//forms.aweber.com/form/29/183149529.js";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, "script", "aweber-wjs-final"));
-    </script>
-  </div>
-
-  <footer style="margin-top:60px; font-size:0.9rem; color:#555;">
-    © 2025 NextWave AI Suite · All rights reserved.
-  </footer>
-
 </body>
-  </html>
-  
+</html>
