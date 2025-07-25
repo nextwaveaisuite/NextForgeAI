@@ -1,69 +1,72 @@
+/* Dark Theme Base Styles */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  line-height: 1.6;
+  background-color: #121212;
+  color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-h1, h2 {
-  color: #58a6ff;
+header, footer {
+  background-color: #1f1f1f;
+  text-align: center;
+  padding: 1rem;
 }
 
-header.hero {
-  background-color: #161b22;
-  padding: 40px 20px;
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
   text-align: center;
 }
 
-.features, .video, .optin {
-  padding: 30px 20px;
-  max-width: 800px;
-  margin: auto;
+/* Button */
+a.button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
-.features ul {
-  list-style: none;
-  padding: 0;
+a.button:hover {
+  background-color: #45a049;
 }
 
-.features li {
-  margin-bottom: 10px;
-  padding-left: 20px;
-  position: relative;
+/* Floating Chat Button */
+.chat-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #03a9f4;
+  color: white;
+  padding: 0.75rem 1.2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
 }
 
-.features li::before {
-  content: "✅";
-  position: absolute;
-  left: 0;
-  color: #3fb950;
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.video-container iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-
-.optin {
-  background-color: #161b22;
-  text-align: center;
-}
-
-footer.footer {
-  text-align: center;
-  padding: 20px;
-  font-size: 0.9em;
-  color: #8b949e;
-}
+.chat-btn:hover {
+  background-color: #0288d1;
+  }
