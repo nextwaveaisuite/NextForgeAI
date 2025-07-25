@@ -1,44 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>NextForge AI Dashboard</title>
-  <link rel="stylesheet" href="../style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0b0f19;
+      color: #fff;
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #3be8b0;
+    }
+    .plan-badge {
+      background: #1f2633;
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .input-box, .response-box {
+      background: #1f2633;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .input-box input {
+      width: 100%;
+      padding: 15px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      margin-top: 10px;
+    }
+    .btn {
+      background: #3be8b0;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .response-box pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .copy-btn {
+      background: #111;
+      color: #fff;
+      border: 1px solid #555;
+      padding: 6px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🧠 NextForge AI Dashboard</h1>
-    <p>Welcome! You now have full access to the tool.</p>
 
-    <!-- Prompt Input -->
-    <label for="prompt">Your Idea:</label>
-    <input type="text" id="prompt" placeholder="e.g. AI Tool for freelancers" />
-    <button onclick="generate()">Generate SaaS Tool</button>
+  <h1>🚀 Welcome to NextForge AI</h1>
+  <div class="plan-badge">Your Plan: <strong>Free</strong> (Upgrade to unlock full power!)</div>
 
-    <!-- AI Response Area -->
-    <div id="output" class="panel">
-      <p><strong>AI Response:</strong></p>
-      <pre id="response">Waiting for your input...</pre>
-    </div>
+  <div class="input-box">
+    <label for="prompt">Enter your SaaS idea or question:</label>
+    <input id="prompt" placeholder="e.g., Create a subscription billing tool...">
+    <button class="btn" onclick="generateResponse()">Generate</button>
   </div>
 
+  <div class="response-box" id="responseBox" style="display:none;">
+    <h3>🔧 AI Response</h3>
+    <pre id="responseText"></pre>
+    <button class="copy-btn" onclick="copyResponse()">📋 Copy Response</button>
+  </div>
+
+  <footer>© 2025 NextWave AI Suite. Powered by ChatGPT + Stripe + PayPal</footer>
+
   <script>
-    async function generate() {
-      const prompt = document.getElementById("prompt").value;
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Authorization": "Bearer YOUR_OPENAI_API_KEY",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          model: "gpt-4",
-          messages: [{ role: "user", content: prompt }],
-        })
+    function generateResponse() {
+      const prompt = document.getElementById("prompt").value.trim();
+      if (!prompt) return alert("Please enter a prompt.");
+      const responseBox = document.getElementById("responseBox");
+      const responseText = document.getElementById("responseText");
+      responseText.textContent = "🔄 Thinking...\nGenerating ideas for: " + prompt;
+
+      responseBox.style.display = "block";
+
+      // Simulated AI Output (You can connect GPT API here)
+      setTimeout(() => {
+        responseText.textContent = `✅ Here's your AI-generated output:\n\n🧠 SaaS Tool Idea: "${prompt}"\n\nThis tool will include:\n- User authentication\n- Subscription billing (Stripe)\n- Admin dashboard\n- Marketing integrations\n\nUse this as a base to build with NextForge AI!`;
+      }, 1500);
+    }
+
+    function copyResponse() {
+      const text = document.getElementById("responseText").textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied!");
       });
-      const data = await res.json();
-      document.getElementById("response").innerText = data.choices[0].message.content;
     }
   </script>
 </body>
