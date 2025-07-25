@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextForge AI – SaaS Generator</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .dashboard {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .dashboard h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .result-box {
+      background: #f4f4f4;
+      border-left: 4px solid #28a745;
+      padding: 1rem;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🧠 NextForge AI</h1>
+    <p class="subtitle">Your Instant SaaS Idea Generator</p>
+  </header>
+
+  <div class="dashboard">
+    <h2>Describe your SaaS idea:</h2>
+    <textarea id="ideaInput" placeholder="Example: A tool that helps Etsy sellers optimize product titles..."></textarea>
+    <button class="cta" onclick="generate()">Generate SaaS Tool</button>
+
+    <div class="result-box" id="resultBox" style="display:none;"></div>
+  </div>
+
+  <footer>
+    <p>© 2025 NextWave AI Suite – All rights reserved.</p>
+  </footer>
+
+  <script>
+    function generate() {
+      const input = document.getElementById('ideaInput').value.trim();
+      const resultBox = document.getElementById('resultBox');
+
+      if (!input) {
+        alert("Please enter your SaaS idea.");
+        return;
+      }
+
+      const toolName = generateSaaSName(input);
+
+      const output = `✅ SaaS Tool Generated!
+
+🛠️ Name: ${toolName}
+
+📋 Description:
+${input}
+
+🚀 Features:
+- AI-powered builder
+- Instant landing page
+- Credit system included
+
+💡 Status: MVP Ready`;
+
+      resultBox.textContent = output;
+      resultBox.style.display = 'block';
+    }
+
+    function generateSaaSName(input) {
+      const words = input.split(" ");
+      const base = words[0] || "SaaS";
+      return base.charAt(0).toUpperCase() + base.slice(1).toLowerCase() + "Forge";
+    }
+  </script>
+
+</body>
+</html>
 
