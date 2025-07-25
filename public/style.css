@@ -1,60 +1,46 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f5f9ff;
+  background: #f9f9f9;
   color: #333;
   margin: 0;
   padding: 40px 20px;
 }
-
 .container {
-  max-width: 600px;
+  max-width: 700px;
   margin: auto;
-  background: #fff;
+  background: white;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
-
 h1 {
-  color: #1a73e8;
-  margin-bottom: 15px;
+  color: #0077cc;
 }
-
-p, li {
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-ul {
-  margin: 10px 0 20px;
-}
-
-.btn {
-  background: #00b86b;
+.button {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #28a745;
   color: white;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
+  text-decoration: none;
   border-radius: 6px;
-  cursor: pointer;
-  margin-top: 10px;
+  margin: 10px 0;
 }
-
-.btn:hover {
-  background: #009f5e;
-}
-
-textarea {
+input[type="text"], input[type="email"] {
   width: 100%;
   padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
+  margin: 10px 0;
 }
-
-pre {
-  background: #f0f0f0;
-  padding: 12px;
+button {
+  padding: 10px 16px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.panel {
+  margin-top: 20px;
+  background: #eee;
+  padding: 10px;
   border-radius: 6px;
-  white-space: pre-wrap;
 }
