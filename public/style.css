@@ -1,66 +1,69 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #f0f4ff, #e2e8ff);
   margin: 0;
-  padding: 0;
-  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  line-height: 1.6;
 }
 
-.container {
-  max-width: 600px;
-  margin: 5vh auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+h1, h2 {
+  color: #58a6ff;
+}
+
+header.hero {
+  background-color: #161b22;
+  padding: 40px 20px;
   text-align: center;
 }
 
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  color: #2a2a6e;
+.features, .video, .optin {
+  padding: 30px 20px;
+  max-width: 800px;
+  margin: auto;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #555;
+.features ul {
+  list-style: none;
+  padding: 0;
 }
 
-.tagline {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  color: #444;
+.features li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
 }
 
-input[type="email"] {
-  width: 80%;
-  padding: 0.8rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.features li::before {
+  content: "✅";
+  position: absolute;
+  left: 0;
+  color: #3fb950;
 }
 
-.button, button {
-  background: #2a2a6e;
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-top: 10px;
 }
 
-.button:hover, button:hover {
-  background: #1a1a5e;
+.video-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
-footer {
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  color: #777;
-    }
+.optin {
+  background-color: #161b22;
+  text-align: center;
+}
+
+footer.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #8b949e;
+}
