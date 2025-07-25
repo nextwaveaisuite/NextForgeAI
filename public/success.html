@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
   <title>You're In – NextForge AI</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .success-container {
+      max-width: 800px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .chat-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #238636;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    .chat-button:hover {
+      background: #2ea043;
+    }
+
+    iframe.dashboard-frame {
+      width: 100%;
+      height: 600px;
+      border: none;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="container success">
+  <div class="success-container">
     <h1>✅ You're In!</h1>
-    <p class="tagline">Thanks for subscribing.<br>Your access to <strong>NextForge AI</strong> is now unlocked.</p>
+    <p>Thanks for subscribing. Your access to <strong>NextForge AI</strong> is now unlocked.</p>
 
-    <a class="button" href="/dashboard">🚀 Enter the Software</a>
+    <a href="#ai-chat" class="chat-button">💬 Chat with AI Assistant</a>
 
-    <footer>
-      <p>© 2025 NextWave AI Suite – All rights reserved.</p>
-    </footer>
+    <iframe src="/dashboard" class="dashboard-frame" title="NextForge Dashboard"></iframe>
   </div>
 
+  <footer class="footer">
+    <p>© 2025 NextWave AI Suite – All rights reserved.</p>
+  </footer>
 </body>
 </html>
