@@ -2,69 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NextForge AI – Build Your SaaS Instantly</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextForge AI – Build AI SaaS in 60 Seconds</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
-      line-height: 1.6;
-    }
-
-    header {
-      background-color: #161b22;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid #30363d;
-    }
-
-    header h1 {
-      color: #58a6ff;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.1rem;
-    }
-
-    section.optin {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #21262d;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      text-align: center;
-    }
-
-    section.optin h2 {
-      color: #3fb950;
-      margin-bottom: 10px;
-    }
-
-    section.optin p {
-      margin-bottom: 20px;
-    }
-
-    #loading-bar {
-      width: 0%;
-      height: 4px;
-      background: #3fb950;
-      transition: width 0.5s ease;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      margin-top: 60px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #8b949e;
-      padding-bottom: 20px;
-    }
-  </style>
 </head>
 <body>
 
@@ -73,45 +13,71 @@
     <p>Create & Monetize AI SaaS Instantly</p>
   </header>
 
-  <section class="optin">
-    <h2>🔓 Unlock Access</h2>
-    <p>Enter your email to access NextForge AI:</p>
+  <main>
+    <section class="optin">
+      <h2>Get Instant Access</h2>
+      <p>Enter your email below to unlock the full software:</p>
 
-    <!-- Loading Bar -->
-    <div id="loading-bar"></div>
+      <!-- ✅ AWeber Form Embed -->
+      <div class="AW-Form-183149529"></div>
+      <script type="text/javascript">
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//forms.aweber.com/form/29/183149529.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, "script", "aweber-wjs-1qwb5hvl8"));
+      </script>
 
-    <!-- AWeber Opt-In Form -->
-    <div class="AW-Form-183149529"></div>
-    <script type="text/javascript">
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//forms.aweber.com/form/29/183149529.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      })(document, "script", "aweber-wjs-1qwb5hvl8");
-    </script>
-  </section>
+      <!-- Progress Bar (Hidden Initially) -->
+      <div id="progress-bar" style="display:none; margin-top: 20px;">
+        <p>Processing...</p>
+        <progress value="0" max="100" id="progress"></progress>
+      </div>
+    </section>
+
+    <!-- 📽️ Embedded Explainer Video -->
+    <section class="video">
+      <h2>See How It Works</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/BMraDSbW4qk" 
+              title="Explainer Video" frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 NextWave AI Suite – All rights reserved.</p>
   </footer>
 
-  <!-- Bonus: Progress Bar on Submit -->
+  <!-- 💬 Chat Button -->
+  <button class="chat-btn" onclick="alert('Launching AI Assistant...')">💬 Chat with AI Assistant</button>
+
+  <!-- Optional: Loading Bar Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const interval = setInterval(() => {
-        const forms = document.querySelectorAll('form');
-        if (forms.length > 0) {
-          forms.forEach(form => {
-            form.addEventListener('submit', () => {
-              document.getElementById('loading-bar').style.width = '100%';
-            });
-          });
-          clearInterval(interval);
-        }
-      }, 500);
-    });
+    const aweberFormCheck = setInterval(() => {
+      const btn = document.querySelector('.AW-Form-183149529 form input[type="submit"]');
+      if (btn) {
+        clearInterval(aweberFormCheck);
+        btn.addEventListener('click', () => {
+          const progressSection = document.getElementById('progress-bar');
+          const bar = document.getElementById('progress');
+          progressSection.style.display = 'block';
+          let progress = 0;
+          const interval = setInterval(() => {
+            if (progress >= 100) {
+              clearInterval(interval);
+            } else {
+              progress += 5;
+              bar.value = progress;
+            }
+          }, 100);
+        });
+      }
+    }, 500);
   </script>
+
 </body>
-</html>
+  </html>
+  
