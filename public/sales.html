@@ -3,34 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Get Access – NextForge AI</title>
+  <title>Get NextForge AI – $12.95 One-Time Access</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: white;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background: #1e293b;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    section {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .highlight {
+      background: #facc15;
+      color: #0f172a;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .buy-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 30px;
+      background: #22c55e;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      text-decoration: none;
+    }
+    .buy-button:hover {
+      background: #16a34a;
+    }
+    .payment-options {
+      display: none;
+      margin-top: 20px;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .payment-options a {
+      display: inline-block;
+      margin: 10px 10px 0 0;
+      padding: 10px 20px;
+      background: #3b82f6;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .payment-options a.paypal {
+      background: #ffc439;
+      color: #111827;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin: 40px 0;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🔥 Unlock NextForge AI</h1>
-    <p class="subheading">Your AI-powered SaaS Builder. Create, Launch, and Monetize in Seconds.</p>
+  <header>
+    <h1>Unlock Full Access to <span class="highlight">NextForge AI</span></h1>
+  </header>
 
-    <ul class="features">
-      <li>✅ Build AI SaaS tools in under 60 seconds</li>
+  <section>
+    <p>Build complete SaaS software tools in just 60 seconds using NextForge AI.</p>
+    <ul>
       <li>✅ No coding or design required</li>
-      <li>✅ 100% hosted & automated</li>
-      <li>✅ One-time unlock: just $12.95</li>
+      <li>✅ Fully customizable dashboard included</li>
+      <li>✅ Instant deployment-ready output</li>
+      <li>✅ One-time payment — no monthly fee</li>
     </ul>
 
-    <div class="payment-buttons">
-      <a href="https://buy.stripe.com/8wM5nI1bD0wC1WcfYY" class="button stripe">💳 Pay with Stripe</a>
+    <p><strong>🔥 Launch Price: Only $12.95 (one-time)</strong></p>
 
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="paypal-form">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
-        <input type="hidden" name="item_name" value="NextForge AI Access">
-        <input type="hidden" name="amount" value="12.95">
-        <input type="hidden" name="currency_code" value="USD">
-        <input type="hidden" name="return" value="https://nextforge.nextwaveaisuite.com/dashboard/index.html">
-        <button type="submit" class="button paypal">🅿️ Pay with PayPal</button>
-      </form>
+    <a class="buy-button" onclick="document.getElementById('pay-options').style.display='block'">
+      🔓 Buy Now – $12.95
+    </a>
+
+    <div id="pay-options" class="payment-options">
+      <p><strong>Select your payment method:</strong></p>
+
+      <!-- Stripe Button -->
+      <a href="https://buy.stripe.com/6oE4jC5b3a6E0lCcMM" target="_blank">
+        Pay with Stripe
+      </a>
+
+      <!-- PayPal Button -->
+      <a class="paypal"
+         href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nextwaveaisuite@gmail.com&item_name=NextForge+AI+Lifetime+Access&amount=12.95&currency_code=USD&button_subtype=services&no_note=1&no_shipping=1&rm=1&return=https://nextforge.nextwaveaisuite.com/dashboard/index.html&cancel_return=https://nextforge.nextwaveaisuite.com/sales.html">
+        Pay with PayPal
+      </a>
     </div>
-  </div>
+  </section>
+
+  <footer>
+    © 2025 NextWave AI Suite. All rights reserved.
+  </footer>
 </body>
-</html>
+        </html>
+        
