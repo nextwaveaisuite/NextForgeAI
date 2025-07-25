@@ -48,7 +48,7 @@
 
   <div class="dashboard">
     <h2>Describe your idea:</h2>
-    <textarea id="ideaInput" placeholder="Example: A tool that helps podcasters schedule interviews..."></textarea>
+    <textarea id="ideaInput" placeholder="Example: A tool for Etsy sellers to optimize listings..."></textarea>
     <button class="cta" onclick="generate()">Generate SaaS Tool</button>
 
     <div class="result-box" id="resultBox" style="display:none;"></div>
@@ -62,12 +62,10 @@
     function generate() {
       const input = document.getElementById('ideaInput').value.trim();
       const resultBox = document.getElementById('resultBox');
-
       if (!input) {
         alert("Please enter an idea first.");
         return;
       }
-
       const output = `✅ SaaS Tool Generated!
 
 🛠️ Name: ${generateSaaSName(input)}
@@ -81,11 +79,9 @@ ${input}
 - Credit system included
 
 💡 Status: MVP Ready`;
-
       resultBox.textContent = output;
       resultBox.style.display = 'block';
     }
-
     function generateSaaSName(input) {
       const words = input.split(" ");
       const seed = words[0].charAt(0).toUpperCase() + words[0].slice(1).toLowerCase();
