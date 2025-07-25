@@ -6,40 +6,131 @@
   <title>NextForge AI Dashboard</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 2rem;
-      background: #f0f4f8;
-      color: #333;
+      padding: 0;
+      background: #f3f6fa;
+      color: #222;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-      background: white;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-      border-radius: 12px;
+    header {
+      background: #0a84ff;
+      color: white;
+      padding: 1rem;
       text-align: center;
     }
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+    }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
       color: #0a84ff;
     }
-    p {
-      font-size: 1.2rem;
+    .plan-badge {
+      background: #eee;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
-    .launch-note {
+    .assistant-panel {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
       margin-top: 2rem;
-      color: #888;
+      background: #f9fbff;
+    }
+    textarea {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 0.5rem;
+      resize: vertical;
+      font-size: 1rem;
+    }
+    .buttons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    button, .upgrade-btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      background: #0a84ff;
+      color: white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover, .upgrade-btn:hover {
+      background: #006ee3;
+    }
+    .output-box {
+      margin-top: 1rem;
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <h1>🚀 NextForge AI</h1>
+    <p>Build SaaS tools instantly with AI</p>
+  </header>
+
   <div class="container">
-    <h1>🚀 Welcome to NextForge AI</h1>
-    <p>Your software tool is now live and ready to use.</p>
-    <p class="launch-note">This is your main dashboard page.</p>
+    <div class="plan-badge">Your Plan: <strong>Free</strong></div>
+
+    <a href="https://nextforge.nextwaveaisuite.com/sales.html" class="upgrade-btn">🚀 Upgrade Now</a>
+
+    <div class="assistant-panel">
+      <h2>🤖 AI Assistant</h2>
+      <label for="prompt">Enter your idea or prompt:</label>
+      <textarea id="prompt" rows="4" placeholder="e.g. Create a SaaS tool that automates Instagram growth..."></textarea>
+      
+      <div class="buttons">
+        <button onclick="generateResponse()">Generate Response</button>
+        <button onclick="copyOutput()">Copy Output</button>
+      </div>
+
+      <div class="output-box" id="output">
+        AI response will appear here...
+      </div>
+    </div>
   </div>
+
+  <script>
+    function generateResponse() {
+      const prompt = document.getElementById("prompt").value.trim();
+      const output = document.getElementById("output");
+      if (!prompt) {
+        output.innerText = "⚠️ Please enter a prompt first.";
+        return;
+      }
+
+      // Placeholder response
+      output.innerText = `🧠 Generating SaaS idea for: "${prompt}"...\n\n✅ Example Output:\n- Name: InstaGrowthPro\n- Function: Auto-post, hashtag manager, analytics\n- Monetization: $9/mo subscription\n\n*Connect your OpenAI API for real results*`;
+    }
+
+    function copyOutput() {
+      const text = document.getElementById("output").innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("✅ Output copied to clipboard!");
+      });
+    }
+  </script>
+
 </body>
 </html>
