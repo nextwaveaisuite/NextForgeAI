@@ -1,36 +1,76 @@
-<!-- /dashboard/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NextForge AI Dashboard</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css">
+  <script defer src="../script.js"></script>
 </head>
-<body>
-  <div class="container">
-    <h1>🎉 Welcome to NextForge AI</h1>
-    <p>Your software is now unlocked.</p>
+<body class="dashboard-body">
+  <header class="dashboard-header">
+    <h1>🚀 NextForge AI</h1>
+    <p class="tagline">Build SaaS Tools In 60 Seconds with AI</p>
+  </header>
 
-    <div class="ai-panel">
+  <section class="dashboard-panel">
+    <div class="panel-left">
       <h2>🧠 AI Assistant</h2>
-      <textarea id="user-prompt" placeholder="Type your prompt here..."></textarea>
-      <button onclick="generateResponse()">Generate</button>
-      <div id="response"></div>
+      <p>Enter your SaaS tool idea below:</p>
+      <textarea id="promptInput" placeholder="e.g., Build a notebook pad with user login, autosave, and dark mode."></textarea>
+      <button onclick="generateOutput()">⚡ Generate SaaS Tool</button>
+      <div id="outputArea" class="output-box">
+        <p class="placeholder">AI-generated tool description will appear here.</p>
+      </div>
     </div>
 
-    <hr />
+    <div class="panel-right">
+      <div class="plan-box" id="freePlan">
+        <h3>👤 Free Plan</h3>
+        <p>You're currently on the Free plan.</p>
+        <ul>
+          <li>Limited prompt generation</li>
+          <li>No export/download features</li>
+        </ul>
+        <button id="upgradeBtn">🔓 Upgrade to Pro</button>
+      </div>
 
-    <h3>⚙️ Unlock Pro Features</h3>
-    <button onclick="window.location.href='../sales.html#pay-options'">Upgrade to Pro</button>
+      <div class="plan-box hidden" id="proPlan">
+        <h3>✅ Pro Plan Active</h3>
+        <p>Thanks for upgrading!</p>
+        <ul>
+          <li>Unlimited SaaS prompts</li>
+          <li>Export to TXT, PDF</li>
+          <li>AI Branding Tools</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div class="payment-modal" id="paymentModal">
+    <div class="modal-content">
+      <h3>Choose Your Payment Method</h3>
+      <p>Upgrade to Pro for just <strong>$12.95</strong></p>
+      <div class="payment-options">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
+          <input type="hidden" name="item_name" value="NextForge AI - Pro Access">
+          <input type="hidden" name="amount" value="12.95">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="hidden" name="return" value="https://nextforge.nextwaveaisuite.com/dashboard/index.html">
+          <button type="submit" class="pay-btn paypal">💳 Pay with PayPal</button>
+        </form>
+        <a href="https://buy.stripe.com/test_00g03rbS93eHgQUeUU" class="pay-btn stripe" target="_blank">💸 Pay with Stripe</a>
+      </div>
+      <button onclick="closeModal()" class="close-modal">Cancel</button>
+    </div>
   </div>
 
-  <script>
-    function generateResponse() {
-      const prompt = document.getElementById("user-prompt").value;
-      const responseBox = document.getElementById("response");
-      responseBox.innerHTML = `<p><em>Simulated response to:</em> ${prompt}</p>`;
-    }
-  </script>
+  <footer class="dashboard-footer">
+    <p>© 2025 NextWave AI Suite. All rights reserved.</p>
+  </footer>
 </body>
-</html>
+    </html>
+    
