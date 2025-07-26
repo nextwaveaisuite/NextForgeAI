@@ -1,1 +1,36 @@
+<!-- /dashboard/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextForge AI Dashboard</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Welcome to NextForge AI</h1>
+    <p>Your software is now unlocked.</p>
 
+    <div class="ai-panel">
+      <h2>🧠 AI Assistant</h2>
+      <textarea id="user-prompt" placeholder="Type your prompt here..."></textarea>
+      <button onclick="generateResponse()">Generate</button>
+      <div id="response"></div>
+    </div>
+
+    <hr />
+
+    <h3>⚙️ Unlock Pro Features</h3>
+    <button onclick="window.location.href='../sales.html#pay-options'">Upgrade to Pro</button>
+  </div>
+
+  <script>
+    function generateResponse() {
+      const prompt = document.getElementById("user-prompt").value;
+      const responseBox = document.getElementById("response");
+      responseBox.innerHTML = `<p><em>Simulated response to:</em> ${prompt}</p>`;
+    }
+  </script>
+</body>
+</html>
