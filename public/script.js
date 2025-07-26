@@ -1,43 +1,47 @@
-const SUPABASE_URL = 'https://gnhawdytxulfkgukkgzl.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImduaGF3ZHl4dHVsZmtndWtrZ3psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMwNzgyMzgsImV4cCI6MjA2ODY1NDIzOH0.lh9kHboN4crAcAY26s_352_2JzUa9mQpAermNk9wVk8';
+// Simulate AI response generation
+function generateAIResponse() {
+  const input = document.getElementById("userInput").value;
+  const output = document.getElementById("aiOutput");
 
-const form = document.getElementById('lead-form');
-const emailInput = document.getElementById('email');
-const message = document.getElementById('form-message');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = emailInput.value.trim();
-
-  if (!email) {
-    message.textContent = '⚠️ Please enter a valid email address.';
+  if (input.trim() === "") {
+    output.innerText = "Please enter something for the AI to respond to.";
     return;
   }
 
-  try {
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Prefer': 'return=representation'
-      },
-      body: JSON.stringify({ email })
-    });
-
-    const result = await response.json();
-
-    if (!response.ok) {
-  console.error('Supabase Error:', result);
-  message.textContent = '⚠️ Something went wrong. Please try again.';
-} else {
-  message.textContent = '✅ You’ve been subscribed!';
-  form.reset();
-  window.location.href = 'success.html'; // <-- this triggers the redirect
+  output.innerText = `Simulated response to: ${input}`;
 }
-  } catch (err) {
-    console.error('Network Error:', err);
-    message.textContent = '⚠️ Network error. Please try again.';
-  }
-});
+
+// Copy output
+function copyOutput() {
+  const output = document.getElementById("aiOutput").innerText;
+  navigator.clipboard.writeText(output).then(() => {
+    alert("Copied to clipboard!");
+  });
+}
+
+// Show payment modal
+function openPaymentModal() {
+  document.getElementById("paymentModal").style.display = "flex";
+}
+
+// Close modal
+function closeModal() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+
+// Redirect to Stripe Checkout
+function payWithStripe() {
+  window.location.href = "https://buy.stripe.com/4gw6qf9gf7zH6Fq7ss";
+}
+
+// Redirect to PayPal
+function payWithPayPal() {
+  window.location.href = "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=nextwaveaisuite@gmail.com&currency_code=USD&amount=12.95&item_name=NextForge+Pro+Upgrade";
+}
+
+// Unlock Pro features
+function unlockProView() {
+  document.getElementById("proOnlyContent").classList.remove("hidden");
+  document.getElementById("upgradeBtn").classList.add("hidden");
+  alert("🎉 Pro features unlocked!");
+}
