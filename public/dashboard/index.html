@@ -23,7 +23,7 @@
 
     <section class="upgrade-box">
       <h3>⚙️ Unlock Pro Features</h3>
-      <button id="upgradeBtn" onclick="openPaymentModal()">Upgrade to Pro</button>
+      <button onclick="openPaymentModal()">Upgrade to Pro</button>
     </section>
 
     <section id="proOnlyContent" class="hidden">
@@ -39,12 +39,19 @@
       <h2>Upgrade to Pro – $12.95</h2>
       <p>Choose your payment method:</p>
       <button onclick="payWithStripe()">💳 Pay with Stripe</button>
-      <button onclick="payWithPayPal()">🅿️ Pay with PayPal</button>
-      <hr />
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
+        <input type="hidden" name="item_name" value="NextForge AI Pro Access">
+        <input type="hidden" name="amount" value="12.95">
+        <input type="hidden" name="currency_code" value="USD">
+        <button type="submit">🅿️ Pay with PayPal</button>
+      </form>
       <button onclick="unlockProView()">🎉 Simulate Unlock (Testing)</button>
     </div>
   </div>
 
   <script src="../script.js"></script>
 </body>
-</html>
+          </html>
+          
