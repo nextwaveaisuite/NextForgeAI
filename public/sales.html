@@ -12,59 +12,70 @@
       background: linear-gradient(to right, #0d1117, #1e1e2f);
       color: #ffffff;
     }
+
     header {
       text-align: center;
       padding: 60px 20px 20px;
     }
+
     header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin: 0;
       color: #ffd700;
     }
+
     header p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-top: 10px;
       color: #ccc;
     }
+
     .features {
       max-width: 1000px;
       margin: 40px auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
       padding: 0 20px;
     }
+
     .feature {
       background: #222842;
-      padding: 30px;
+      padding: 25px;
       border-radius: 10px;
       width: 280px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
       text-align: center;
     }
+
     .feature h3 {
       color: #00ffe1;
       margin-bottom: 10px;
     }
+
     .feature p {
       color: #bbb;
       font-size: 0.95rem;
     }
+
     .price-box {
       background: #101322;
       padding: 40px 20px;
       text-align: center;
       border-top: 2px solid #00ffe1;
     }
+
     .price-box h2 {
       font-size: 2rem;
       color: #00ffe1;
     }
+
     .price-box p {
       margin: 10px 0 30px;
       color: #ccc;
     }
+
     .buy-button {
       background: #ffd700;
       color: #000;
@@ -76,15 +87,33 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+
     .buy-button:hover {
       background: #ffe44d;
     }
+
+    #payment-options {
+      margin-top: 30px;
+    }
+
     .footer {
       text-align: center;
       font-size: 0.85rem;
       margin-top: 60px;
       color: #888;
       padding-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .feature {
+        width: 100%;
+      }
+      .price-box h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -115,12 +144,12 @@
     <p>One small upgrade. Unlimited creation potential.</p>
     <button class="buy-button" onclick="showPaymentOptions()">Upgrade Now</button>
 
-    <div id="payment-options" style="display:none; margin-top:30px;">
+    <div id="payment-options" style="display:none;">
       <p><strong>Choose your payment method:</strong></p>
 
       <!-- Stripe Payment Link -->
       <p>
-        <a href="https://buy.stripe.com/test_eVa7vz1T33QQ0eEcMM" target="_blank" style="color:#00ffe1;">
+        <a href="https://buy.stripe.com/test_eVa7vz1T33QQ0eEcMM" target="_blank" style="color:#00ffe1; font-weight:bold;">
           🔵 Pay with Stripe
         </a>
       </p>
@@ -149,5 +178,4 @@
   </script>
 
 </body>
-                                                       </html>
-                                                       
+</html>
