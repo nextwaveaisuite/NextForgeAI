@@ -4,73 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NextForge AI Dashboard</title>
-  <link rel="stylesheet" href="../style.css">
-  <script defer src="../script.js"></script>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body class="dashboard-body">
   <header class="dashboard-header">
     <h1>🚀 NextForge AI</h1>
-    <p class="tagline">Build SaaS Tools In 60 Seconds with AI</p>
+    <p>Build SaaS Tools Instantly with AI</p>
   </header>
 
-  <section class="dashboard-panel">
-    <div class="panel-left">
+  <main class="dashboard-main">
+    <section class="ai-panel">
       <h2>🧠 AI Assistant</h2>
-      <p>Enter your SaaS tool idea below:</p>
-      <textarea id="promptInput" placeholder="e.g., Build a notebook pad with user login, autosave, and dark mode."></textarea>
-      <button onclick="generateOutput()">⚡ Generate SaaS Tool</button>
-      <div id="outputArea" class="output-box">
-        <p class="placeholder">AI-generated tool description will appear here.</p>
-      </div>
-    </div>
+      <input type="text" id="userInput" placeholder="Type your idea (e.g., Build a notebook app)" />
+      <button onclick="generateAIResponse()">Generate</button>
+      <pre id="aiOutput">Your response will appear here...</pre>
+      <button onclick="copyOutput()">📋 Copy</button>
+    </section>
 
-    <div class="panel-right">
-      <div class="plan-box" id="freePlan">
-        <h3>👤 Free Plan</h3>
-        <p>You're currently on the Free plan.</p>
-        <ul>
-          <li>Limited prompt generation</li>
-          <li>No export/download features</li>
-        </ul>
-        <button id="upgradeBtn">🔓 Upgrade to Pro</button>
-      </div>
+    <section class="upgrade-box">
+      <h3>⚙️ Unlock Pro Features</h3>
+      <button id="upgradeBtn" onclick="openPaymentModal()">Upgrade to Pro</button>
+    </section>
 
-      <div class="plan-box hidden" id="proPlan">
-        <h3>✅ Pro Plan Active</h3>
-        <p>Thanks for upgrading!</p>
-        <ul>
-          <li>Unlimited SaaS prompts</li>
-          <li>Export to TXT, PDF</li>
-          <li>AI Branding Tools</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    <section id="proOnlyContent" class="hidden">
+      <h2>🔥 Pro Feature: Export Full SaaS Tool</h2>
+      <p>This is a simulated Pro-level feature. In the real Pro version, users will generate and download a complete SaaS app instantly.</p>
+    </section>
+  </main>
 
-  <!-- Payment Modal -->
-  <div class="payment-modal" id="paymentModal">
+  <!-- Modal -->
+  <div id="paymentModal" class="modal">
     <div class="modal-content">
-      <h3>Choose Your Payment Method</h3>
-      <p>Upgrade to Pro for just <strong>$12.95</strong></p>
-      <div class="payment-options">
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
-          <input type="hidden" name="item_name" value="NextForge AI - Pro Access">
-          <input type="hidden" name="amount" value="12.95">
-          <input type="hidden" name="currency_code" value="USD">
-          <input type="hidden" name="return" value="https://nextforge.nextwaveaisuite.com/dashboard/index.html">
-          <button type="submit" class="pay-btn paypal">💳 Pay with PayPal</button>
-        </form>
-        <a href="https://buy.stripe.com/test_00g03rbS93eHgQUeUU" class="pay-btn stripe" target="_blank">💸 Pay with Stripe</a>
-      </div>
-      <button onclick="closeModal()" class="close-modal">Cancel</button>
+      <span class="close-button" onclick="closeModal()">×</span>
+      <h2>Upgrade to Pro – $12.95</h2>
+      <p>Choose your payment method:</p>
+      <button onclick="payWithStripe()">💳 Pay with Stripe</button>
+      <button onclick="payWithPayPal()">🅿️ Pay with PayPal</button>
+      <hr />
+      <button onclick="unlockProView()">🎉 Simulate Unlock (Testing)</button>
     </div>
   </div>
 
-  <footer class="dashboard-footer">
-    <p>© 2025 NextWave AI Suite. All rights reserved.</p>
-  </footer>
+  <script src="../script.js"></script>
 </body>
-    </html>
-    
+</html>
