@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextForge AI – Pro Upgrade</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Unlock NextForge AI Pro</h1>
+    <p>Access powerful features and build premium SaaS tools in seconds.</p>
+
+    <button onclick="openPaymentModal()">🔓 Unlock Pro for $12.95</button>
+  </div>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeModal()">×</span>
+      <h2>Choose Your Payment Method</h2>
+      <button onclick="payWithStripe()">💳 Pay with Stripe</button>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
+        <input type="hidden" name="item_name" value="NextForge AI Pro Access">
+        <input type="hidden" name="amount" value="12.95">
+        <input type="hidden" name="currency_code" value="USD">
+        <button type="submit">🅿️ Pay with PayPal</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+          </html>
 
