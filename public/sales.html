@@ -3,35 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextForge AI – Pro Upgrade</title>
+  <title>Upgrade to Pro – NextForge AI</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #0d1117, #1e1e2f);
+      color: #ffffff;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #ffd700;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #ccc;
+    }
+    .features {
+      max-width: 1000px;
+      margin: 40px auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 0 20px;
+    }
+    .feature {
+      background: #222842;
+      padding: 30px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+    .feature h3 {
+      color: #00ffe1;
+      margin-bottom: 10px;
+    }
+    .feature p {
+      color: #bbb;
+      font-size: 0.95rem;
+    }
+    .price-box {
+      background: #101322;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 2px solid #00ffe1;
+    }
+    .price-box h2 {
+      font-size: 2rem;
+      color: #00ffe1;
+    }
+    .price-box p {
+      margin: 10px 0 30px;
+      color: #ccc;
+    }
+    .buy-button {
+      background: #ffd700;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .buy-button:hover {
+      background: #ffe44d;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 60px;
+      color: #888;
+      padding-bottom: 40px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 Unlock NextForge AI Pro</h1>
-    <p>Access powerful features and build premium SaaS tools in seconds.</p>
 
-    <button onclick="openPaymentModal()">🔓 Unlock Pro for $12.95</button>
-  </div>
+  <header>
+    <h1>Unlock NextForge AI Pro</h1>
+    <p>Build real SaaS tools in 60 seconds with the most powerful AI tool on the web.</p>
+  </header>
 
-  <!-- Payment Modal -->
-  <div id="paymentModal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" onclick="closeModal()">×</span>
-      <h2>Choose Your Payment Method</h2>
-      <button onclick="payWithStripe()">💳 Pay with Stripe</button>
+  <section class="features">
+    <div class="feature">
+      <h3>🔓 Full Access</h3>
+      <p>Unlock unlimited creations, GPT prompt templates, export tools, and more.</p>
+    </div>
+    <div class="feature">
+      <h3>⚙️ AI Builder Mode</h3>
+      <p>Enable real-time AI tool generation – launch tools in seconds.</p>
+    </div>
+    <div class="feature">
+      <h3>💡 Exclusive Prompts</h3>
+      <p>Use our Pro-Only SaaS blueprints, name generators, landing writers, and more.</p>
+    </div>
+  </section>
+
+  <section class="price-box">
+    <h2>Just $12.95 – Lifetime Access</h2>
+    <p>One small upgrade. Unlimited creation potential.</p>
+    <button class="buy-button" onclick="showPaymentOptions()">Upgrade Now</button>
+
+    <div id="payment-options" style="display:none; margin-top:30px;">
+      <p><strong>Choose your payment method:</strong></p>
+
+      <!-- Stripe Payment Link -->
+      <p>
+        <a href="https://buy.stripe.com/test_eVa7vz1T33QQ0eEcMM" target="_blank" style="color:#00ffe1;">
+          🔵 Pay with Stripe
+        </a>
+      </p>
+
+      <!-- PayPal Button -->
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
         <input type="hidden" name="cmd" value="_xclick">
         <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
-        <input type="hidden" name="item_name" value="NextForge AI Pro Access">
+        <input type="hidden" name="item_name" value="NextForge AI Pro Lifetime Access">
         <input type="hidden" name="amount" value="12.95">
         <input type="hidden" name="currency_code" value="USD">
-        <button type="submit">🅿️ Pay with PayPal</button>
+        <input type="submit" value="🟡 Pay with PayPal" class="buy-button" style="margin-top:10px;" />
       </form>
     </div>
+  </section>
+
+  <div class="footer">
+    You'll be redirected to the software dashboard after purchase.<br/>
+    Need help? Email support@nextwaveaisuite.com
   </div>
 
-  <script src="script.js"></script>
-</body>
-          </html>
+  <script>
+    function showPaymentOptions() {
+      document.getElementById("payment-options").style.display = "block";
+    }
+  </script>
 
+</body>
+                                                       </html>
+                                                       
