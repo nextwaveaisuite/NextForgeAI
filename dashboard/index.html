@@ -1,36 +1,62 @@
-<!-- /dashboard/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>NextForge AI Dashboard</title>
-  <link rel="stylesheet" href="../style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>🎉 Welcome to NextForge AI</h1>
-    <p>Your software is now unlocked.</p>
-
-    <div class="ai-panel">
-      <h2>🧠 AI Assistant</h2>
-      <textarea id="user-prompt" placeholder="Type your prompt here..."></textarea>
-      <button onclick="generateResponse()">Generate</button>
-      <div id="response"></div>
-    </div>
-
-    <hr />
-
-    <h3>⚙️ Unlock Pro Features</h3>
-    <button onclick="window.location.href='../sales.html#pay-options'">Upgrade to Pro</button>
-  </div>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 20px; background: #f6f9ff; }
+    header { font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .credits { background: #333; color: #fff; padding: 6px 12px; border-radius: 8px; }
+    textarea { width: 100%; height: 120px; padding: 12px; font-size: 1rem; margin-top: 10px; }
+    button { margin-top: 10px; padding: 10px 20px; background: #0057ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    .response-box { margin-top: 20px; background: white; padding: 15px; border-radius: 8px; min-height: 100px; }
+    .locks, .buy-credits { margin-top: 30px; }
+    .lock-item { background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; opacity: 0.7; display: flex; justify-content: space-between; align-items: center; }
+    .buy-credits h3 { margin-top: 0; }
+    .buy-credits button { margin: 6px 0; }
+  </style>
   <script>
-    function generateResponse() {
-      const prompt = document.getElementById("user-prompt").value;
-      const responseBox = document.getElementById("response");
-      responseBox.innerHTML = `<p><em>Simulated response to:</em> ${prompt}</p>`;
+    let credits = 50;
+    function updateCreditsDisplay() {
+      document.getElementById("creditDisplay").textContent = "Credits: " + credits;
+    }
+    function useGPT() {
+      const prompt = document.getElementById("prompt").value.trim();
+      const output = document.getElementById("response");
+      if (!prompt) return alert("Please enter your SaaS idea first.");
+      output.textContent = "⏳ Generating your SaaS tool...";
+      // Simulate GPT call
+      setTimeout(() => {
+        output.textContent = "✅ Your SaaS tool idea:\n\n" + prompt + "\n\n➡️ Features scaffolded. (This would be real GPT output in full version.)";
+      }, 1000);
     }
   </script>
+</head>
+<body onload="updateCreditsDisplay()">
+  <header>
+    🧠 NextForge AI
+    <span id="creditDisplay" class="credits">Credits: 0</span>
+  </header>
+
+  <h2>Describe Your SaaS Tool</h2>
+  <textarea id="prompt" placeholder="Example: A tool that helps restaurant owners schedule staff with AI."></textarea>
+  <button onclick="useGPT()">Generate SaaS Tool</button>
+
+  <div class="response-box" id="response"></div>
+
+  <div class="locks">
+    <h3>🔒 Upgrade Features</h3>
+    <div class="lock-item"><span>Add Login System</span><small>15 credits</small></div>
+    <div class="lock-item"><span>Enable Stripe Payments</span><small>10 credits</small></div>
+    <div class="lock-item"><span>Export Full Project ZIP</span><small>20 credits</small></div>
+    <div class="lock-item"><span>White-Label Branding</span><small>50 credits</small></div>
+  </div>
+
+  <div class="buy-credits">
+    <h3>💳 Buy More Credits</h3>
+    <button onclick="window.open('https://www.paypal.com/paypalme/nextwaveaisuite', '_blank')">PayPal – 50 credits ($9)</button><br>
+    <button onclick="window.open('https://buy.stripe.com/test_dR6cNa2kM0fM7vO3cc', '_blank')">Stripe – 50 credits ($9)</button>
+  </div>
 </body>
 </html>
