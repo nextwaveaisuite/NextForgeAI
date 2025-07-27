@@ -26,7 +26,6 @@
       const output = document.getElementById("response");
       if (!prompt) return alert("Please enter your SaaS idea first.");
       output.textContent = "⏳ Generating your SaaS tool...";
-      // Simulate GPT call
       setTimeout(() => {
         output.textContent = "✅ Your SaaS tool idea:\n\n" + prompt + "\n\n➡️ Features scaffolded. (This would be real GPT output in full version.)";
       }, 1000);
@@ -36,7 +35,7 @@
 <body onload="updateCreditsDisplay()">
   <header>
     🧠 NextForge AI
-    <span id="creditDisplay" class="credits">Credits: 0</span>
+    <span id="creditDisplay" class="credits">Credits: 50</span>
   </header>
 
   <h2>Describe Your SaaS Tool</h2>
