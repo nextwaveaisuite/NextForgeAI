@@ -10,7 +10,7 @@
     .credits { background: #333; color: #fff; padding: 6px 12px; border-radius: 8px; }
     textarea { width: 100%; height: 120px; padding: 12px; font-size: 1rem; margin-top: 10px; }
     button { margin-top: 10px; padding: 10px 20px; background: #0057ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    .response-box { margin-top: 20px; background: white; padding: 15px; border-radius: 8px; min-height: 100px; }
+    .response-box { margin-top: 20px; background: white; padding: 15px; border-radius: 8px; min-height: 100px; white-space: pre-wrap; }
     .locks, .buy-credits { margin-top: 30px; }
     .lock-item { background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; opacity: 0.7; display: flex; justify-content: space-between; align-items: center; }
     .buy-credits h3 { margin-top: 0; }
@@ -27,7 +27,7 @@
       if (!prompt) return alert("Please enter your SaaS idea first.");
       output.textContent = "⏳ Generating your SaaS tool...";
       setTimeout(() => {
-        output.textContent = "✅ Your SaaS tool idea:\n\n" + prompt + "\n\n➡️ Features scaffolded. (This would be real GPT output in full version.)";
+        output.textContent = "✅ SaaS Tool Generated:\n\n" + prompt + "\n\n✔️ This is where your real GPT response will appear.\n\n🔥 Use credits to unlock more features.";
       }, 1000);
     }
   </script>
@@ -39,16 +39,16 @@
   </header>
 
   <h2>Describe Your SaaS Tool</h2>
-  <textarea id="prompt" placeholder="Example: A tool that helps restaurant owners schedule staff with AI."></textarea>
+  <textarea id="prompt" placeholder="e.g., A tool that helps fitness coaches schedule clients automatically..."></textarea>
   <button onclick="useGPT()">Generate SaaS Tool</button>
 
-  <div class="response-box" id="response"></div>
+  <div class="response-box" id="response">Your SaaS idea response will appear here...</div>
 
   <div class="locks">
     <h3>🔒 Upgrade Features</h3>
     <div class="lock-item"><span>Add Login System</span><small>15 credits</small></div>
     <div class="lock-item"><span>Enable Stripe Payments</span><small>10 credits</small></div>
-    <div class="lock-item"><span>Export Full Project ZIP</span><small>20 credits</small></div>
+    <div class="lock-item"><span>Export Project ZIP</span><small>20 credits</small></div>
     <div class="lock-item"><span>White-Label Branding</span><small>50 credits</small></div>
   </div>
 
