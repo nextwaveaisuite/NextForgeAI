@@ -3,132 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextForge AI – Build SaaS Tools Instantly</title>
+  <title>NextForge AI Dashboard</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0d1b2a;
-      color: #f8f9fa;
+      background-color: #101728;
+      color: #fff;
       margin: 0;
       padding: 0;
     }
     header {
-      background-color: #1b263b;
-      padding: 1rem;
+      padding: 20px;
       text-align: center;
-    }
-    .credits {
-      text-align: right;
-      padding: 0.5rem 1rem;
-      font-weight: bold;
-      color: #ffc107;
+      background: #16213e;
+      color: #f1c40f;
     }
     .container {
-      padding: 2rem;
       max-width: 800px;
-      margin: auto;
+      margin: 20px auto;
+      background: #1f2a48;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
-    input, button, textarea {
-      font-size: 1rem;
-      padding: 0.75rem;
+    textarea {
       width: 100%;
-      margin: 0.5rem 0;
-      border-radius: 6px;
+      height: 100px;
+      padding: 12px;
+      font-size: 16px;
       border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
     }
-    .btn-primary {
-      background-color: #ffc107;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #f1c40f;
       color: #000;
-      font-weight: bold;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
     }
-    .feature-box {
-      background: #1b263b;
-      padding: 1rem;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-    .locked {
-      color: #bbb;
-      font-style: italic;
+    .output {
+      background: #2e3b5e;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 6px;
+      white-space: pre-wrap;
     }
     .footer {
+      margin-top: 40px;
       text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #ccc;
+      font-size: 14px;
+      color: #bbb;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>🧠 NextForge AI</h1>
-    <p>Launch SaaS Tools in Seconds</p>
+    <p>Build SaaS Tools in Seconds</p>
   </header>
-  <div class="credits">Credits: <span id="creditCount">50</span></div>
 
   <div class="container">
     <h2>Describe Your SaaS Tool</h2>
-    <textarea id="saasPrompt" placeholder="e.g., A tool that helps small shop owners schedule staff time with AI"></textarea>
-    <button class="btn-primary" onclick="generateTool()">🚀 Generate SaaS Tool</button>
-
-    <div id="result" class="feature-box"></div>
-
-    <h3>🔒 Unlock Pro Features</h3>
-    <ul>
-      <li>✅ Export to ZIP <span class="locked">(20 credits)</span></li>
-      <li>✅ Add Login System <span class="locked">(15 credits)</span></li>
-      <li>✅ Enable Stripe Payments <span class="locked">(10 credits)</span></li>
-      <li>✅ White-Label Branding <span class="locked">(50 credits)</span></li>
-    </ul>
-
-    <button class="btn-primary" onclick="buyCredits()">💳 Buy More Credits</button>
-
-    <h3>📦 Saved Tools (Private)</h3>
-    <div class="feature-box" id="savedTools">No saved tools yet.</div>
+    <textarea id="prompt" placeholder="e.g., A tool that helps real estate agents automate listings with AI."></textarea>
+    <button onclick="generate()">Generate SaaS Tool</button>
+    <div class="output" id="outputBox">Your result will appear here...</div>
   </div>
 
-  <div class="footer">© 2025 NextForge AI · Powered by DeepSeek · All rights reserved.</div>
+  <div class="footer">NextForge AI v1.5 · DeepSeek Simulation · All Rights Reserved</div>
 
   <script>
-    let credits = 50;
-
-    function generateTool() {
-      const prompt = document.getElementById("saasPrompt").value.trim();
-      if (!prompt) return alert("Enter your SaaS idea first.");
-
-      const resultHTML = `
-        <h3>SaaS Tool Generated:</h3>
-        <strong>Idea:</strong> ${prompt}<br/>
-        <ul>
-          <li>🔹 index.html – Homepage</li>
-          <li>🔹 login.html – Login/Register</li>
-          <li>🔹 dashboard.html – Main app interface</li>
-          <li>🔹 features.js – Feature logic scaffold</li>
-          <li>🔹 README.md – Setup + description</li>
-        </ul>
-        <p><em>To unlock the full downloadable version, export to ZIP (20 credits).</em></p>`;
-
-      document.getElementById("result").innerHTML = resultHTML;
-
-      const saved = document.getElementById("savedTools").innerHTML;
-      if (saved === 'No saved tools yet.') {
-        document.getElementById("savedTools").innerHTML = `<ul><li>${prompt}</li></ul>`;
-      } else {
-        document.getElementById("savedTools").innerHTML += `<li>${prompt}</li>`;
+    function generate() {
+      const prompt = document.getElementById('prompt').value.trim();
+      if (!prompt) {
+        alert("Please describe your SaaS idea.");
+        return;
       }
-    }
 
-    function buyCredits() {
-      alert("Redirecting to payment options...");
-      window.location.href = "https://nextforge.nextwaveaisuite.com/sales.html";
-    }
+      const scaffold = `
+🔹 Name: ${prompt.split(" ")[0]} AI
+🔹 Description: ${prompt}
+🔹 Features:
+- User Dashboard
+- AI Logic Engine
+- Stripe Billing
+- Authentication
+- Export Tool
 
-    function updateCredits(amount) {
-      credits += amount;
-      document.getElementById("creditCount").innerText = credits;
+🔹 Monetization: Freemium + Credit Upgrades
+🔹 Ideal Users: Startups, Solopreneurs, Niche Marketers
+      `;
+      document.getElementById('outputBox').innerText = scaffold;
     }
   </script>
 </body>
-  </html>
-                               
+</html>
