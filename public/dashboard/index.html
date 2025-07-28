@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NextForge AI Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1d36;
+      color: white;
+      padding: 30px;
+    }
+    h1 {
+      color: #fdd835;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    input, button, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+    button {
+      background: #fdd835;
+      color: #0b1d36;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    .section {
+      background: #132c4f;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+    }
+    .credit-balance {
+      background: #1a3b5f;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 NextForge AI</h1>
 
+    <div class="section">
+      <strong>Credits:</strong> <span id="credits">50</span>
+      <div class="credit-balance">Use credits to add pro features below</div>
+    </div>
+
+    <div class="section">
+      <h3>Describe Your SaaS Tool</h3>
+      <textarea id="prompt" placeholder="e.g., A tool that helps remote teams manage time with AI..."></textarea>
+      <button onclick="generateTool()">Generate SaaS Tool</button>
+      <pre id="output">Your generated tool will appear here...</pre>
+    </div>
+
+    <div class="section">
+      <h3>Pro Features (Cost Credits)</h3>
+      <button onclick="useCredits(15)">Add Login System (15)</button><br/>
+      <button onclick="useCredits(10)">Enable Stripe Payments (10)</button><br/>
+      <button onclick="useCredits(20)">Export to ZIP (20)</button><br/>
+      <button onclick="useCredits(50)">White Label Branding (50)</button>
+    </div>
+
+    <div class="section">
+      <h3>💳 Buy More Credits</h3>
+      <button onclick="showPayment()">Buy 50 Credits – $9</button>
+      <div id="paybox" style="display:none; margin-top:20px;">
+        <a href="https://buy.stripe.com/6oEaGq0RLeen7yEbIJ" target="_blank">Pay with Stripe</a><br/>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="business" value="nextwaveaisuite@gmail.com">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="item_name" value="NextForge Credits">
+          <input type="hidden" name="amount" value="9.00">
+          <input type="hidden" name="currency_code" value="USD">
+          <input type="submit" value="Pay with PayPal">
+        </form>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>🔐 Enter Your DeepSeek API Key</h3>
+      <input id="apikey" placeholder="sk-..." />
+      <button onclick="saveAPIKey()">Save API Key</button>
+    </div>
+  </div>
+
+  <script>
+    let credits = 50;
+    function updateCredits() {
+      document.getElementById('credits').innerText = credits;
+    }
+    function useCredits(amount) {
+      if (credits >= amount) {
+        credits -= amount;
+        updateCredits();
+        alert("Feature unlocked! (simulated)");
+      } else {
+        alert("Not enough credits.");
+      }
+    }
+    function showPayment() {
+      document.getElementById("paybox").style.display = "block";
+    }
+    function saveAPIKey() {
+      const key = document.getElementById("apikey").value;
+      localStorage.setItem("deepseek_api", key);
+      alert("API Key saved!");
+    }
+    function generateTool() {
+      const prompt = document.getElementById("prompt").value.trim();
+      if (!prompt) return alert("Enter a prompt first.");
+      const fakeOutput = `
+SaaS Tool Generated:
+
+🔹 Name: ${prompt.split(" ")[0] + "ify"}
+🔹 Description: ${prompt}
+🔹 Features:
+- User dashboard
+- AI-powered automation
+- Billing & login
+- Custom branding
+
+🔹 Monetization: Subscription plans (Free, Pro, Enterprise)
+🔹 Ideal Users: Startups, freelancers, agencies
+      `;
+      document.getElementById("output").innerText = fakeOutput;
+    }
+  </script>
+</body>
+            </html>
+            
