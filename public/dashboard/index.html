@@ -3,160 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NextForge AI – SaaS Builder</title>
+  <title>NextForge AI – Build SaaS Tools Instantly</title>
   <style>
-    body { font-family: sans-serif; margin: 0; background: #0a1c2c; color: #ffffff; padding: 20px; }
-    header { font-size: 1.4rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .credits { background: #ffd700; color: #0a1c2c; padding: 6px 12px; border-radius: 8px; font-weight: bold; }
-    textarea { width: 100%; height: 100px; padding: 12px; border-radius: 6px; border: none; font-size: 1rem; background: #1b2b3b; color: #fff; }
-    button { padding: 10px 20px; background: #ffd700; color: #0a1c2c; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; }
-    .response-box { margin-top: 20px; padding: 15px; background: #1b2b3b; border-radius: 8px; min-height: 100px; white-space: pre-wrap; }
-    .locks, .buy-credits, .saved-tools { margin-top: 30px; }
-    .lock-item { background: #1b2b3b; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; opacity: 0.75; }
-    .saved-tool { background: #142637; padding: 12px; border-radius: 6px; margin-bottom: 8px; }
-    .saved-tool button { margin-top: 5px; font-size: 0.9rem; }
-    #paymentOptions { display: none; margin-top: 10px; }
-    .section-title { color: #ffd700; font-size: 1.1rem; margin-top: 20px; }
-    .pdf-link { display: inline-block; margin-top: 12px; color: #ffd700; font-weight: bold; text-decoration: underline; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d1b2a;
+      color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1b263b;
+      padding: 1rem;
+      text-align: center;
+    }
+    .credits {
+      text-align: right;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      color: #ffc107;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    input, button, textarea {
+      font-size: 1rem;
+      padding: 0.75rem;
+      width: 100%;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      border: none;
+    }
+    .btn-primary {
+      background-color: #ffc107;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .feature-box {
+      background: #1b263b;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .locked {
+      color: #bbb;
+      font-style: italic;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
   <header>
-    🧠 NextForge AI
-    <span id="creditDisplay" class="credits">Credits: 50</span>
+    <h1>🧠 NextForge AI</h1>
+    <p>Launch SaaS Tools in Seconds</p>
   </header>
+  <div class="credits">Credits: <span id="creditCount">50</span></div>
 
-  <div>
-    <div class="section-title">Describe Your SaaS Tool</div>
-    <textarea id="prompt" placeholder="e.g., An AI tool for content creators to schedule social posts"></textarea>
-    <button onclick="generateTool()">Generate SaaS Tool</button>
-    <button onclick="surpriseMe()">🎲 Surprise Me</button>
-    <div class="response-box" id="response">Your tool will appear here...</div>
-    <button onclick="copyToClipboard()">📋 Copy</button>
-    <button onclick="saveTool()">💾 Save Tool</button>
+  <div class="container">
+    <h2>Describe Your SaaS Tool</h2>
+    <textarea id="saasPrompt" placeholder="e.g., A tool that helps small shop owners schedule staff time with AI"></textarea>
+    <button class="btn-primary" onclick="generateTool()">🚀 Generate SaaS Tool</button>
+
+    <div id="result" class="feature-box"></div>
+
+    <h3>🔒 Unlock Pro Features</h3>
+    <ul>
+      <li>✅ Export to ZIP <span class="locked">(20 credits)</span></li>
+      <li>✅ Add Login System <span class="locked">(15 credits)</span></li>
+      <li>✅ Enable Stripe Payments <span class="locked">(10 credits)</span></li>
+      <li>✅ White-Label Branding <span class="locked">(50 credits)</span></li>
+    </ul>
+
+    <button class="btn-primary" onclick="buyCredits()">💳 Buy More Credits</button>
+
+    <h3>📦 Saved Tools (Private)</h3>
+    <div class="feature-box" id="savedTools">No saved tools yet.</div>
   </div>
 
-  <div class="locks">
-    <div class="section-title">🔒 Pro Features</div>
-    <div class="lock-item"><span>Add Login System</span><small>15 credits</small></div>
-    <div class="lock-item"><span>Enable Stripe Payments</span><small>10 credits</small></div>
-    <div class="lock-item"><span>Export Full ZIP</span><small>20 credits</small></div>
-    <div class="lock-item"><span>White-Label License</span><small>50 credits</small></div>
-  </div>
-
-  <div class="buy-credits">
-    <div class="section-title">💳 Buy Credits</div>
-    <button onclick="togglePayments()">Buy Credits</button>
-    <div id="paymentOptions">
-      <button onclick="window.open('https://www.paypal.com/paypalme/nextwaveaisuite', '_blank')">PayPal – 50 credits ($9)</button><br>
-      <button onclick="window.open('https://buy.stripe.com/test_dR6cNa2kM0fM7vO3cc', '_blank')">Stripe – 50 credits ($9)</button>
-    </div>
-  </div>
-
-  <div class="saved-tools">
-    <div class="section-title">💼 My Saved SaaS Tools</div>
-    <div id="savedList"></div>
-  </div>
-
-  <div class="section-title">📘 Free Guide</div>
-  <a href="#" class="pdf-link">Download: SaaS Surge Blueprint PDF</a>
+  <div class="footer">© 2025 NextForge AI · Powered by DeepSeek · All rights reserved.</div>
 
   <script>
     let credits = 50;
-    const promptEl = document.getElementById("prompt");
-    const responseEl = document.getElementById("response");
-    const savedList = document.getElementById("savedList");
-
-    function updateCreditsDisplay() {
-      document.getElementById("creditDisplay").textContent = "Credits: " + credits;
-    }
-
-    function togglePayments() {
-      const box = document.getElementById("paymentOptions");
-      box.style.display = box.style.display === "block" ? "none" : "block";
-    }
 
     function generateTool() {
-      const prompt = promptEl.value.trim();
-      if (!prompt) return alert("Please enter a prompt.");
-      responseEl.textContent = "⏳ Generating...";
-      setTimeout(() => {
-        const output = `✅ SaaS Tool Generated:
+      const prompt = document.getElementById("saasPrompt").value.trim();
+      if (!prompt) return alert("Enter your SaaS idea first.");
 
-🔹 Name: ${generateName(prompt)}
-🔹 Description: ${prompt}
-🔹 Features:
-- User dashboard
-- AI-powered automation
-- Billing & login
-- Custom branding
+      const resultHTML = `
+        <h3>SaaS Tool Generated:</h3>
+        <strong>Idea:</strong> ${prompt}<br/>
+        <ul>
+          <li>🔹 index.html – Homepage</li>
+          <li>🔹 login.html – Login/Register</li>
+          <li>🔹 dashboard.html – Main app interface</li>
+          <li>🔹 features.js – Feature logic scaffold</li>
+          <li>🔹 README.md – Setup + description</li>
+        </ul>
+        <p><em>To unlock the full downloadable version, export to ZIP (20 credits).</em></p>`;
 
-🔹 Monetization: Subscription plans (Free, Pro, Enterprise)
-🔹 Ideal Users: Startups, freelancers, agencies`;
-        responseEl.textContent = output;
-      }, 1000);
+      document.getElementById("result").innerHTML = resultHTML;
+
+      const saved = document.getElementById("savedTools").innerHTML;
+      if (saved === 'No saved tools yet.') {
+        document.getElementById("savedTools").innerHTML = `<ul><li>${prompt}</li></ul>`;
+      } else {
+        document.getElementById("savedTools").innerHTML += `<li>${prompt}</li>`;
+      }
     }
 
-    function generateName(prompt) {
-      const suffixes = ["Forge", "Flow", "Pulse", "Craft", "Mate"];
-      const base = prompt.split(" ")[0] || "Next";
-      return base.charAt(0).toUpperCase() + base.slice(1) + suffixes[Math.floor(Math.random() * suffixes.length)];
+    function buyCredits() {
+      alert("Redirecting to payment options...");
+      window.location.href = "https://nextforge.nextwaveaisuite.com/sales.html";
     }
 
-    function copyToClipboard() {
-      navigator.clipboard.writeText(responseEl.textContent);
-      alert("Copied to clipboard!");
+    function updateCredits(amount) {
+      credits += amount;
+      document.getElementById("creditCount").innerText = credits;
     }
-
-    function saveTool() {
-      const tool = responseEl.textContent;
-      if (!tool || tool.includes("Generating")) return alert("No tool to save.");
-      let tools = JSON.parse(localStorage.getItem("savedTools") || "[]");
-      tools.unshift(tool);
-      tools = tools.slice(0, 10);
-      localStorage.setItem("savedTools", JSON.stringify(tools));
-      loadSavedTools();
-    }
-
-    function loadSavedTools() {
-      savedList.innerHTML = "";
-      const tools = JSON.parse(localStorage.getItem("savedTools") || "[]");
-      tools.forEach((tool, i) => {
-        const div = document.createElement("div");
-        div.className = "saved-tool";
-        div.innerHTML = `<pre>${tool}</pre><button onclick="useSaved(${i})">🔁 Use Again</button>`;
-        savedList.appendChild(div);
-      });
-    }
-
-    function useSaved(index) {
-      const tools = JSON.parse(localStorage.getItem("savedTools") || "[]");
-      promptEl.value = tools[index].split("\n")[2]?.replace("🔹 Description: ", "") || "";
-      responseEl.textContent = tools[index];
-    }
-
-    function surpriseMe() {
-      const examples = [
-        "A SaaS for managing rental properties",
-        "A platform for digital product creators",
-        "A billing tool for personal trainers",
-        "A productivity tracker for remote teams",
-        "A calendar SaaS for event organizers"
-      ];
-      promptEl.value = examples[Math.floor(Math.random() * examples.length)];
-      generateTool();
-    }
-
-    // Referral credit system placeholder
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("ref")) {
-      credits += 5;
-      updateCreditsDisplay();
-      alert("Referral code applied! You earned +5 credits.");
-    }
-
-    updateCreditsDisplay();
-    loadSavedTools();
   </script>
 </body>
-</html>
+  </html>
+                               
