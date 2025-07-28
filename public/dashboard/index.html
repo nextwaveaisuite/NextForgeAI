@@ -1,62 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>NextForge AI Dashboard</title>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextForge AI – SaaS Builder</title>
   <style>
-    body { font-family: sans-serif; margin: 0; padding: 20px; background: #f6f9ff; }
-    header { font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-    .credits { background: #333; color: #fff; padding: 6px 12px; border-radius: 8px; }
-    textarea { width: 100%; height: 120px; padding: 12px; font-size: 1rem; margin-top: 10px; }
-    button { margin-top: 10px; padding: 10px 20px; background: #0057ff; color: white; border: none; border-radius: 6px; cursor: pointer; }
-    .response-box { margin-top: 20px; background: white; padding: 15px; border-radius: 8px; min-height: 100px; }
-    .locks, .buy-credits { margin-top: 30px; }
-    .lock-item { background: #fff; padding: 15px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 10px; opacity: 0.7; display: flex; justify-content: space-between; align-items: center; }
-    .buy-credits h3 { margin-top: 0; }
-    .buy-credits button { margin: 6px 0; }
+    body { font-family: sans-serif; margin: 0; background: #0a1c2c; color: #ffffff; padding: 20px; }
+    header { font-size: 1.4rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .credits { background: #ffd700; color: #0a1c2c; padding: 6px 12px; border-radius: 8px; font-weight: bold; }
+    textarea { width: 100%; height: 100px; padding: 12px; border-radius: 6px; border: none; font-size: 1rem; background: #1b2b3b; color: #fff; }
+    button { padding: 10px 20px; background: #ffd700; color: #0a1c2c; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; }
+    .response-box { margin-top: 20px; padding: 15px; background: #1b2b3b; border-radius: 8px; min-height: 100px; white-space: pre-wrap; }
+    .locks, .buy-credits, .saved-tools { margin-top: 30px; }
+    .lock-item { background: #1b2b3b; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; opacity: 0.75; }
+    .saved-tool { background: #142637; padding: 12px; border-radius: 6px; margin-bottom: 8px; }
+    .saved-tool button { margin-top: 5px; font-size: 0.9rem; }
+    #paymentOptions { display: none; margin-top: 10px; }
+    .section-title { color: #ffd700; font-size: 1.1rem; margin-top: 20px; }
+    .pdf-link { display: inline-block; margin-top: 12px; color: #ffd700; font-weight: bold; text-decoration: underline; }
   </style>
-  <script>
-    let credits = 50;
-    function updateCreditsDisplay() {
-      document.getElementById("creditDisplay").textContent = "Credits: " + credits;
-    }
-    function useGPT() {
-      const prompt = document.getElementById("prompt").value.trim();
-      const output = document.getElementById("response");
-      if (!prompt) return alert("Please enter your SaaS idea first.");
-      output.textContent = "⏳ Generating your SaaS tool...";
-      // Simulate GPT call
-      setTimeout(() => {
-        output.textContent = "✅ Your SaaS tool idea:\n\n" + prompt + "\n\n➡️ Features scaffolded. (This would be real GPT output in full version.)";
-      }, 1000);
-    }
-  </script>
 </head>
-<body onload="updateCreditsDisplay()">
+<body>
   <header>
     🧠 NextForge AI
-    <span id="creditDisplay" class="credits">Credits: 0</span>
+    <span id="creditDisplay" class="credits">Credits: 50</span>
   </header>
 
-  <h2>Describe Your SaaS Tool</h2>
-  <textarea id="prompt" placeholder="Example: A tool that helps restaurant owners schedule staff with AI."></textarea>
-  <button onclick="useGPT()">Generate SaaS Tool</button>
-
-  <div class="response-box" id="response"></div>
+  <div>
+    <div class="section-title">Describe Your SaaS Tool</div>
+    <textarea id="prompt" placeholder="e.g., An AI tool for content creators to schedule social posts"></textarea>
+    <button onclick="generateTool()">Generate SaaS Tool</button>
+    <button onclick="surpriseMe()">🎲 Surprise Me</button>
+    <div class="response-box" id="response">Your tool will appear here...</div>
+    <button onclick="copyToClipboard()">📋 Copy</button>
+    <button onclick="saveTool()">💾 Save Tool</button>
+  </div>
 
   <div class="locks">
-    <h3>🔒 Upgrade Features</h3>
+    <div class="section-title">🔒 Pro Features</div>
     <div class="lock-item"><span>Add Login System</span><small>15 credits</small></div>
     <div class="lock-item"><span>Enable Stripe Payments</span><small>10 credits</small></div>
-    <div class="lock-item"><span>Export Full Project ZIP</span><small>20 credits</small></div>
-    <div class="lock-item"><span>White-Label Branding</span><small>50 credits</small></div>
+    <div class="lock-item"><span>Export Full ZIP</span><small>20 credits</small></div>
+    <div class="lock-item"><span>White-Label License</span><small>50 credits</small></div>
   </div>
 
   <div class="buy-credits">
-    <h3>💳 Buy More Credits</h3>
-    <button onclick="window.open('https://www.paypal.com/paypalme/nextwaveaisuite', '_blank')">PayPal – 50 credits ($9)</button><br>
-    <button onclick="window.open('https://buy.stripe.com/test_dR6cNa2kM0fM7vO3cc', '_blank')">Stripe – 50 credits ($9)</button>
+    <div class="section-title">💳 Buy Credits</div>
+    <button onclick="togglePayments()">Buy Credits</button>
+    <div id="paymentOptions">
+      <button onclick="window.open('https://www.paypal.com/paypalme/nextwaveaisuite', '_blank')">PayPal – 50 credits ($9)</button><br>
+      <button onclick="window.open('https://buy.stripe.com/test_dR6cNa2kM0fM7vO3cc', '_blank')">Stripe – 50 credits ($9)</button>
+    </div>
   </div>
+
+  <div class="saved-tools">
+    <div class="section-title">💼 My Saved SaaS Tools</div>
+    <div id="savedList"></div>
+  </div>
+
+  <div class="section-title">📘 Free Guide</div>
+  <a href="#" class="pdf-link">Download: SaaS Surge Blueprint PDF</a>
+
+  <script>
+    let credits = 50;
+    const promptEl = document.getElementById("prompt");
+    const responseEl = document.getElementById("response");
+    const savedList = document.getElementById("savedList");
+
+    function updateCreditsDisplay() {
+      document.getElementById("creditDisplay").textContent = "Credits: " + credits;
+    }
+
+    function togglePayments() {
+      const box = document.getElementById("paymentOptions");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+
+    function generateTool() {
+      const prompt = promptEl.value.trim();
+      if (!prompt) return alert("Please enter a prompt.");
+      responseEl.textContent = "⏳ Generating...";
+      setTimeout(() => {
+        const output = `✅ SaaS Tool Generated:
+
+🔹 Name: ${generateName(prompt)}
+🔹 Description: ${prompt}
+🔹 Features:
+- User dashboard
+- AI-powered automation
+- Billing & login
+- Custom branding
+
+🔹 Monetization: Subscription plans (Free, Pro, Enterprise)
+🔹 Ideal Users: Startups, freelancers, agencies`;
+        responseEl.textContent = output;
+      }, 1000);
+    }
+
+    function generateName(prompt) {
+      const suffixes = ["Forge", "Flow", "Pulse", "Craft", "Mate"];
+      const base = prompt.split(" ")[0] || "Next";
+      return base.charAt(0).toUpperCase() + base.slice(1) + suffixes[Math.floor(Math.random() * suffixes.length)];
+    }
+
+    function copyToClipboard() {
+      navigator.clipboard.writeText(responseEl.textContent);
+      alert("Copied to clipboard!");
+    }
+
+    function saveTool() {
+      const tool = responseEl.textContent;
+      if (!tool || tool.includes("Generating")) return alert("No tool to save.");
+      let tools = JSON.parse(localStorage.getItem("savedTools") || "[]");
+      tools.unshift(tool);
+      tools = tools.slice(0, 10);
+      localStorage.setItem("savedTools", JSON.stringify(tools));
+      loadSavedTools();
+    }
+
+    function loadSavedTools() {
+      savedList.innerHTML = "";
+      const tools = JSON.parse(localStorage.getItem("savedTools") || "[]");
+      tools.forEach((tool, i) => {
+        const div = document.createElement("div");
+        div.className = "saved-tool";
+        div.innerHTML = `<pre>${tool}</pre><button onclick="useSaved(${i})">🔁 Use Again</button>`;
+        savedList.appendChild(div);
+      });
+    }
+
+    function useSaved(index) {
+      const tools = JSON.parse(localStorage.getItem("savedTools") || "[]");
+      promptEl.value = tools[index].split("\n")[2]?.replace("🔹 Description: ", "") || "";
+      responseEl.textContent = tools[index];
+    }
+
+    function surpriseMe() {
+      const examples = [
+        "A SaaS for managing rental properties",
+        "A platform for digital product creators",
+        "A billing tool for personal trainers",
+        "A productivity tracker for remote teams",
+        "A calendar SaaS for event organizers"
+      ];
+      promptEl.value = examples[Math.floor(Math.random() * examples.length)];
+      generateTool();
+    }
+
+    // Referral credit system placeholder
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("ref")) {
+      credits += 5;
+      updateCreditsDisplay();
+      alert("Referral code applied! You earned +5 credits.");
+    }
+
+    updateCreditsDisplay();
+    loadSavedTools();
+  </script>
 </body>
 </html>
